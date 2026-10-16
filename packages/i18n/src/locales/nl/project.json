@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Release toevoegen",
+    "create_release": "Release aanmaken",
+    "update_release": "Release bijwerken",
+    "delete_release": "Release verwijderen",
+    "delete_confirmation": "Weet u zeker dat u de release '{name}' wilt verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "release_now": "Nu publiceren",
+    "scope": "Scope",
+    "changelog": "Wijzigingslogboek",
+    "changelog_placeholder": "Beschrijf wat er in deze release is veranderd…",
+    "add_work_items": "Werkitems toevoegen",
+    "remove_work_item": "Uit release verwijderen",
+    "work_items": "Werkitems",
+    "target_date": "Streefdatum",
+    "lead": "Verantwoordelijke",
+    "label": "Label",
+    "tag": "Tag",
+    "status_label": "Status",
+    "no_lead": "Geen verantwoordelijke",
+    "no_labels": "Nog geen labels",
+    "no_tags": "Nog geen tags",
+    "status": {
+      "unreleased": "Niet gepubliceerd",
+      "released": "Gepubliceerd",
+      "cancelled": "Geannuleerd"
+    },
+    "tabs": {
+      "overview": "Overzicht",
+      "scope": "Scope",
+      "changelog": "Wijzigingslogboek"
+    },
+    "form": {
+      "name_placeholder": "Naam van de release",
+      "name_required": "Naam is verplicht",
+      "name_too_long": "De naam moet minder dan 255 tekens bevatten",
+      "description_placeholder": "Beschrijf deze release"
+    },
+    "quick_actions": {
+      "label": "Release-acties tonen"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Groepeer werk in releases",
+        "description": "Groepeer werkitems in een leverbare versie, volg de scope ervan en publiceer een wijzigingslogboek."
+      }
+    },
+    "disabled": {
+      "title": "Releases zijn niet ingeschakeld voor dit project",
+      "description": "Schakel Releases in bij de projectfuncties om werk te groeperen in leverbare versies.",
+      "primary_button": "Functies beheren"
+    },
+    "not_found": {
+      "title": "Release bestaat niet",
+      "description": "De release die u zoekt bestaat niet, is gearchiveerd of is verwijderd.",
+      "primary_button": "Andere releases bekijken"
+    },
+    "toast": {
+      "create": {
+        "success": "Release is aangemaakt.",
+        "error": "Release kon niet worden aangemaakt. Probeer het opnieuw."
+      },
+      "update": {
+        "success": "Release is bijgewerkt.",
+        "error": "Release kon niet worden bijgewerkt. Probeer het opnieuw."
+      },
+      "delete": {
+        "success": "Release is verwijderd.",
+        "error": "Release kon niet worden verwijderd. Probeer het opnieuw."
+      },
+      "copy": {
+        "success": "Releaselink gekopieerd naar het klembord."
+      },
+      "released": {
+        "success": "Release gemarkeerd als gepubliceerd."
+      },
+      "changelog": {
+        "error": "Wijzigingslogboek kon niet worden opgeslagen. Probeer het opnieuw."
+      },
+      "add_work_items": {
+        "error": "Werkitems konden niet worden toegevoegd. Probeer het opnieuw."
+      },
+      "remove_work_item": {
+        "error": "Werkitem kon niet worden verwijderd. Probeer het opnieuw."
+      }
+    }
   }
 }

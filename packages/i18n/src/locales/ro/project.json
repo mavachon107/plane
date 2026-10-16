@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Adăugați o versiune",
+    "create_release": "Creați o versiune",
+    "update_release": "Actualizați versiunea",
+    "delete_release": "Ștergeți versiunea",
+    "delete_confirmation": "Sigur doriți să ștergeți versiunea „{name}”? Această acțiune nu poate fi anulată.",
+    "release_now": "Publicați acum",
+    "scope": "Domeniu",
+    "changelog": "Jurnal de modificări",
+    "changelog_placeholder": "Descrieți ce s-a schimbat în această versiune…",
+    "add_work_items": "Adăugați elemente de lucru",
+    "remove_work_item": "Eliminați din versiune",
+    "work_items": "Elemente de lucru",
+    "target_date": "Dată țintă",
+    "lead": "Responsabil",
+    "label": "Etichetă",
+    "tag": "Tag",
+    "status_label": "Stare",
+    "no_lead": "Fără responsabil",
+    "no_labels": "Încă nu există etichete",
+    "no_tags": "Încă nu există taguri",
+    "status": {
+      "unreleased": "Nepublicată",
+      "released": "Publicată",
+      "cancelled": "Anulată"
+    },
+    "tabs": {
+      "overview": "Prezentare generală",
+      "scope": "Domeniu",
+      "changelog": "Jurnal de modificări"
+    },
+    "form": {
+      "name_placeholder": "Numele versiunii",
+      "name_required": "Numele este obligatoriu",
+      "name_too_long": "Numele trebuie să aibă mai puțin de 255 de caractere",
+      "description_placeholder": "Descrieți această versiune"
+    },
+    "quick_actions": {
+      "label": "Afișați acțiunile versiunii"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Grupați munca în versiuni",
+        "description": "Grupați elementele de lucru într-o versiune livrabilă, urmăriți domeniul acesteia și publicați un jurnal de modificări."
+      }
+    },
+    "disabled": {
+      "title": "Versiunile nu sunt activate pentru acest proiect",
+      "description": "Activați versiunile din funcționalitățile proiectului pentru a grupa munca în versiuni livrabile.",
+      "primary_button": "Gestionați funcționalitățile"
+    },
+    "not_found": {
+      "title": "Versiunea nu există",
+      "description": "Versiunea pe care o căutați nu există, a fost arhivată sau a fost ștearsă.",
+      "primary_button": "Vedeți alte versiuni"
+    },
+    "toast": {
+      "create": {
+        "success": "Versiunea a fost creată cu succes.",
+        "error": "Versiunea nu a putut fi creată. Încercați din nou."
+      },
+      "update": {
+        "success": "Versiunea a fost actualizată cu succes.",
+        "error": "Versiunea nu a putut fi actualizată. Încercați din nou."
+      },
+      "delete": {
+        "success": "Versiunea a fost ștearsă cu succes.",
+        "error": "Versiunea nu a putut fi ștearsă. Încercați din nou."
+      },
+      "copy": {
+        "success": "Linkul versiunii a fost copiat în clipboard."
+      },
+      "released": {
+        "success": "Versiunea a fost marcată ca publicată."
+      },
+      "changelog": {
+        "error": "Jurnalul de modificări nu a putut fi salvat. Încercați din nou."
+      },
+      "add_work_items": {
+        "error": "Elementele de lucru nu au putut fi adăugate. Încercați din nou."
+      },
+      "remove_work_item": {
+        "error": "Elementul de lucru nu a putut fi eliminat. Încercați din nou."
+      }
+    }
   }
 }

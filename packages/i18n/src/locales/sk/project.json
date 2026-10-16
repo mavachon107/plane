@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Pridať vydanie",
+    "create_release": "Vytvoriť vydanie",
+    "update_release": "Upraviť vydanie",
+    "delete_release": "Odstrániť vydanie",
+    "delete_confirmation": "Naozaj chcete odstrániť vydanie „{name}“? Túto akciu nie je možné vrátiť späť.",
+    "release_now": "Publikovať teraz",
+    "scope": "Rozsah",
+    "changelog": "Zoznam zmien",
+    "changelog_placeholder": "Opíšte, čo sa v tomto vydaní zmenilo…",
+    "add_work_items": "Pridať pracovné položky",
+    "remove_work_item": "Odstrániť z vydania",
+    "work_items": "Pracovné položky",
+    "target_date": "Cieľový dátum",
+    "lead": "Zodpovedná osoba",
+    "label": "Štítok",
+    "tag": "Tag",
+    "status_label": "Stav",
+    "no_lead": "Bez zodpovednej osoby",
+    "no_labels": "Zatiaľ žiadne štítky",
+    "no_tags": "Zatiaľ žiadne tagy",
+    "status": {
+      "unreleased": "Nepublikované",
+      "released": "Publikované",
+      "cancelled": "Zrušené"
+    },
+    "tabs": {
+      "overview": "Prehľad",
+      "scope": "Rozsah",
+      "changelog": "Zoznam zmien"
+    },
+    "form": {
+      "name_placeholder": "Názov vydania",
+      "name_required": "Názov je povinný",
+      "name_too_long": "Názov musí mať menej ako 255 znakov",
+      "description_placeholder": "Opíšte toto vydanie"
+    },
+    "quick_actions": {
+      "label": "Zobraziť akcie vydania"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Zoskupte prácu do vydaní",
+        "description": "Zoskupte pracovné položky do vydania pripraveného na nasadenie, sledujte jeho rozsah a publikujte zoznam zmien."
+      }
+    },
+    "disabled": {
+      "title": "Vydania nie sú pre tento projekt povolené",
+      "description": "Povoľte vydania vo funkciách projektu, aby ste mohli zoskupovať prácu do verzií pripravených na nasadenie.",
+      "primary_button": "Spravovať funkcie"
+    },
+    "not_found": {
+      "title": "Vydanie neexistuje",
+      "description": "Hľadané vydanie neexistuje, bolo archivované alebo bolo odstránené.",
+      "primary_button": "Zobraziť ďalšie vydania"
+    },
+    "toast": {
+      "create": {
+        "success": "Vydanie bolo úspešne vytvorené.",
+        "error": "Vydanie sa nepodarilo vytvoriť. Skúste to znova."
+      },
+      "update": {
+        "success": "Vydanie bolo úspešne upravené.",
+        "error": "Vydanie sa nepodarilo upraviť. Skúste to znova."
+      },
+      "delete": {
+        "success": "Vydanie bolo úspešne odstránené.",
+        "error": "Vydanie sa nepodarilo odstrániť. Skúste to znova."
+      },
+      "copy": {
+        "success": "Odkaz na vydanie bol skopírovaný do schránky."
+      },
+      "released": {
+        "success": "Vydanie bolo označené ako publikované."
+      },
+      "changelog": {
+        "error": "Zoznam zmien sa nepodarilo uložiť. Skúste to znova."
+      },
+      "add_work_items": {
+        "error": "Pracovné položky sa nepodarilo pridať. Skúste to znova."
+      },
+      "remove_work_item": {
+        "error": "Pracovnú položku sa nepodarilo odstrániť. Skúste to znova."
+      }
+    }
   }
 }

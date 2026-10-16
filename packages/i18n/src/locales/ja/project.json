@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "リリースを追加",
+    "create_release": "リリースを作成",
+    "update_release": "リリースを更新",
+    "delete_release": "リリースを削除",
+    "delete_confirmation": "リリース「{name}」を削除してもよろしいですか。この操作は取り消せません。",
+    "release_now": "今すぐリリース",
+    "scope": "スコープ",
+    "changelog": "変更履歴",
+    "changelog_placeholder": "このリリースで変更された内容を記入してください……",
+    "add_work_items": "作業項目を追加",
+    "remove_work_item": "リリースから削除",
+    "work_items": "作業項目",
+    "target_date": "目標日",
+    "lead": "リード",
+    "label": "ラベル",
+    "tag": "タグ",
+    "status_label": "ステータス",
+    "no_lead": "リードなし",
+    "no_labels": "ラベルはまだありません",
+    "no_tags": "タグはまだありません",
+    "status": {
+      "unreleased": "未リリース",
+      "released": "リリース済み",
+      "cancelled": "キャンセル済み"
+    },
+    "tabs": {
+      "overview": "概要",
+      "scope": "スコープ",
+      "changelog": "変更履歴"
+    },
+    "form": {
+      "name_placeholder": "リリース名",
+      "name_required": "名前は必須です",
+      "name_too_long": "名前は255文字未満にしてください",
+      "description_placeholder": "このリリースについて記入してください"
+    },
+    "quick_actions": {
+      "label": "リリースの操作メニューを表示"
+    },
+    "empty_state": {
+      "general": {
+        "title": "作業をリリースにまとめる",
+        "description": "作業項目を出荷可能なバージョンにまとめ、スコープを追跡し、変更履歴を公開します。"
+      }
+    },
+    "disabled": {
+      "title": "このプロジェクトではリリースが有効になっていません",
+      "description": "プロジェクトの機能でリリースを有効にすると、作業を出荷可能なバージョンにまとめられます。",
+      "primary_button": "機能を管理"
+    },
+    "not_found": {
+      "title": "リリースが存在しません",
+      "description": "お探しのリリースは存在しないか、アーカイブまたは削除されています。",
+      "primary_button": "他のリリースを表示"
+    },
+    "toast": {
+      "create": {
+        "success": "リリースを作成しました。",
+        "error": "リリースを作成できませんでした。もう一度お試しください。"
+      },
+      "update": {
+        "success": "リリースを更新しました。",
+        "error": "リリースを更新できませんでした。もう一度お試しください。"
+      },
+      "delete": {
+        "success": "リリースを削除しました。",
+        "error": "リリースを削除できませんでした。もう一度お試しください。"
+      },
+      "copy": {
+        "success": "リリースのリンクをクリップボードにコピーしました。"
+      },
+      "released": {
+        "success": "リリース済みとしてマークしました。"
+      },
+      "changelog": {
+        "error": "変更履歴を保存できませんでした。もう一度お試しください。"
+      },
+      "add_work_items": {
+        "error": "作業項目を追加できませんでした。もう一度お試しください。"
+      },
+      "remove_work_item": {
+        "error": "作業項目を削除できませんでした。もう一度お試しください。"
+      }
+    }
   }
 }

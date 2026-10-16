@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Dodaj wydanie",
+    "create_release": "Utwórz wydanie",
+    "update_release": "Zaktualizuj wydanie",
+    "delete_release": "Usuń wydanie",
+    "delete_confirmation": "Czy na pewno usunąć wydanie „{name}”? Tej operacji nie można cofnąć.",
+    "release_now": "Opublikuj teraz",
+    "scope": "Zakres",
+    "changelog": "Lista zmian",
+    "changelog_placeholder": "Proszę opisać, co zmieniło się w tym wydaniu…",
+    "add_work_items": "Dodaj elementy pracy",
+    "remove_work_item": "Usuń z wydania",
+    "work_items": "Elementy pracy",
+    "target_date": "Data docelowa",
+    "lead": "Osoba prowadząca",
+    "label": "Etykieta",
+    "tag": "Tag",
+    "status_label": "Status",
+    "no_lead": "Brak osoby prowadzącej",
+    "no_labels": "Brak etykiet",
+    "no_tags": "Brak tagów",
+    "status": {
+      "unreleased": "Nieopublikowane",
+      "released": "Opublikowane",
+      "cancelled": "Anulowane"
+    },
+    "tabs": {
+      "overview": "Przegląd",
+      "scope": "Zakres",
+      "changelog": "Lista zmian"
+    },
+    "form": {
+      "name_placeholder": "Nazwa wydania",
+      "name_required": "Nazwa jest wymagana",
+      "name_too_long": "Nazwa musi mieć mniej niż 255 znaków",
+      "description_placeholder": "Proszę opisać to wydanie"
+    },
+    "quick_actions": {
+      "label": "Pokaż akcje wydania"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Grupuj pracę w wydania",
+        "description": "Proszę grupować elementy pracy w wydanie gotowe do dostarczenia, śledzić jego zakres i publikować listę zmian."
+      }
+    },
+    "disabled": {
+      "title": "Wydania nie są włączone w tym projekcie",
+      "description": "Proszę włączyć wydania w funkcjach projektu, aby grupować pracę w wersje gotowe do dostarczenia.",
+      "primary_button": "Zarządzaj funkcjami"
+    },
+    "not_found": {
+      "title": "Wydanie nie istnieje",
+      "description": "Szukane wydanie nie istnieje, zostało zarchiwizowane lub zostało usunięte.",
+      "primary_button": "Zobacz inne wydania"
+    },
+    "toast": {
+      "create": {
+        "success": "Wydanie zostało utworzone.",
+        "error": "Nie udało się utworzyć wydania. Proszę spróbować ponownie."
+      },
+      "update": {
+        "success": "Wydanie zostało zaktualizowane.",
+        "error": "Nie udało się zaktualizować wydania. Proszę spróbować ponownie."
+      },
+      "delete": {
+        "success": "Wydanie zostało usunięte.",
+        "error": "Nie udało się usunąć wydania. Proszę spróbować ponownie."
+      },
+      "copy": {
+        "success": "Link do wydania skopiowany do schowka."
+      },
+      "released": {
+        "success": "Wydanie oznaczone jako opublikowane."
+      },
+      "changelog": {
+        "error": "Nie udało się zapisać listy zmian. Proszę spróbować ponownie."
+      },
+      "add_work_items": {
+        "error": "Nie udało się dodać elementów pracy. Proszę spróbować ponownie."
+      },
+      "remove_work_item": {
+        "error": "Nie udało się usunąć elementu pracy. Proszę spróbować ponownie."
+      }
+    }
   }
 }

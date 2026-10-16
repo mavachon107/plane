@@ -220,6 +220,7 @@ class ReleaseSerializer(DynamicBaseSerializer):
     tag_detail = ReleaseTagLiteSerializer(read_only=True, source="tag")
     label_details = serializers.SerializerMethodField()
     work_item_count = serializers.IntegerField(read_only=True)
+    completed_work_item_count = serializers.IntegerField(read_only=True)
 
     def get_label_details(self, obj):
         """Only labels still attached -- see the note in ``ReleaseWriteSerializer``."""
@@ -244,6 +245,7 @@ class ReleaseSerializer(DynamicBaseSerializer):
             "is_prerelease",
             "sort_order",
             "work_item_count",
+            "completed_work_item_count",
             "external_source",
             "external_id",
             "workspace",

@@ -11,6 +11,7 @@ import {
   CyclesOutline,
   IntakeOutline,
   ModuleOutline,
+  ReleasesOutline,
   PagesOutline,
   ViewsOutline,
   WorkItemsOutline,
@@ -71,6 +72,16 @@ export const useNavigationItems = ({
         sortOrder: 3,
       },
       {
+        i18n_key: "sidebar.releases",
+        key: "releases",
+        name: "Releases",
+        href: `/${workspaceSlug}/projects/${projectId}/releases`,
+        icon: ReleasesOutline,
+        access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER],
+        shouldRender: !!project?.release_view,
+        sortOrder: 4,
+      },
+      {
         i18n_key: "sidebar.views",
         key: "views",
         name: "Views",
@@ -78,7 +89,7 @@ export const useNavigationItems = ({
         icon: ViewsOutline,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],
         shouldRender: !!project?.issue_views_view,
-        sortOrder: 4,
+        sortOrder: 5,
       },
       {
         i18n_key: "sidebar.pages",
@@ -88,7 +99,7 @@ export const useNavigationItems = ({
         icon: PagesOutline,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],
         shouldRender: !!project?.page_view,
-        sortOrder: 5,
+        sortOrder: 6,
       },
       {
         i18n_key: "sidebar.intake",
@@ -98,7 +109,7 @@ export const useNavigationItems = ({
         icon: IntakeOutline,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],
         shouldRender: !!project?.inbox_view,
-        sortOrder: 6,
+        sortOrder: 7,
       },
     ],
     [project]

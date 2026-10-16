@@ -46,6 +46,18 @@ class ReleaseViewSet(BaseViewSet):
                     distinct=True,
                 )
             )
+            .annotate(
+                # Drives the completion ring in the list. "Done" mirrors how cycles and
+                # modules count progress: the completed and cancelled state groups.
+                completed_work_item_count=Count(
+                    "issue_release",
+                    filter=Q(
+                        issue_release__deleted_at__isnull=True,
+                        issue_release__issue__state__group__in=["completed", "cancelled"],
+                    ),
+                    distinct=True,
+                )
+            )
             .distinct()
         )
 

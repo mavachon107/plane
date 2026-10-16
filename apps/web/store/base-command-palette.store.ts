@@ -21,6 +21,7 @@ export interface IBaseCommandPaletteStore {
   isCreateProjectModalOpen: boolean;
   isCreateCycleModalOpen: boolean;
   isCreateModuleModalOpen: boolean;
+  isCreateReleaseModalOpen: boolean;
   isCreateViewModalOpen: boolean;
   createPageModal: TCreatePageModal;
   isCreateIssueModalOpen: boolean;
@@ -42,6 +43,7 @@ export interface IBaseCommandPaletteStore {
   toggleCreatePageModal: (value?: TCreatePageModal) => void;
   toggleCreateIssueModal: (value?: boolean, storeType?: TCreateModalStoreTypes, allowedProjectIds?: string[]) => void;
   toggleCreateModuleModal: (value?: boolean) => void;
+  toggleCreateReleaseModal: (value?: boolean) => void;
   toggleDeleteIssueModal: (value?: boolean) => void;
   toggleBulkDeleteIssueModal: (value?: boolean) => void;
   toggleAllStickiesModal: (value?: boolean) => void;
@@ -54,6 +56,7 @@ export class BaseCommandPaletteStore implements IBaseCommandPaletteStore {
   isCreateProjectModalOpen: boolean = false;
   isCreateCycleModalOpen: boolean = false;
   isCreateModuleModalOpen: boolean = false;
+  isCreateReleaseModalOpen: boolean = false;
   isCreateViewModalOpen: boolean = false;
   isCreateIssueModalOpen: boolean = false;
   isDeleteIssueModalOpen: boolean = false;
@@ -74,6 +77,7 @@ export class BaseCommandPaletteStore implements IBaseCommandPaletteStore {
       isCreateProjectModalOpen: observable.ref,
       isCreateCycleModalOpen: observable.ref,
       isCreateModuleModalOpen: observable.ref,
+      isCreateReleaseModalOpen: observable.ref,
       isCreateViewModalOpen: observable.ref,
       isCreateIssueModalOpen: observable.ref,
       isDeleteIssueModalOpen: observable.ref,
@@ -91,6 +95,7 @@ export class BaseCommandPaletteStore implements IBaseCommandPaletteStore {
       toggleCreatePageModal: action,
       toggleCreateIssueModal: action,
       toggleCreateModuleModal: action,
+      toggleCreateReleaseModal: action,
       toggleDeleteIssueModal: action,
       toggleBulkDeleteIssueModal: action,
       toggleAllStickiesModal: action,
@@ -114,6 +119,7 @@ export class BaseCommandPaletteStore implements IBaseCommandPaletteStore {
       this.isCreateCycleModalOpen ||
       this.isCreateProjectModalOpen ||
       this.isCreateModuleModalOpen ||
+      this.isCreateReleaseModalOpen ||
       this.isCreateViewModalOpen ||
       store.powerK.isShortcutsListModalOpen ||
       this.isBulkDeleteIssueModalOpen ||
@@ -234,6 +240,14 @@ export class BaseCommandPaletteStore implements IBaseCommandPaletteStore {
       this.isCreateModuleModalOpen = value;
     } else {
       this.isCreateModuleModalOpen = !this.isCreateModuleModalOpen;
+    }
+  };
+
+  toggleCreateReleaseModal = (value?: boolean) => {
+    if (value !== undefined) {
+      this.isCreateReleaseModalOpen = value;
+    } else {
+      this.isCreateReleaseModalOpen = !this.isCreateReleaseModalOpen;
     }
   };
 

@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { CycleCreateUpdateModal } from "@/components/cycles/modal";
 import { CreateUpdateModuleModal } from "@/components/modules";
 import { CreatePageModal } from "@/components/pages/modals/create-page-modal";
+import { CreateUpdateReleaseModal } from "@/components/releases";
 import { CreateUpdateProjectViewModal } from "@/components/views/modal";
 // hooks
 import { useCommandPalette } from "@/hooks/store/use-command-palette";
@@ -28,6 +29,8 @@ export const ProjectLevelModals = observer(function ProjectLevelModals(props: TP
     toggleCreateCycleModal,
     isCreateModuleModalOpen,
     toggleCreateModuleModal,
+    isCreateReleaseModalOpen,
+    toggleCreateReleaseModal,
     isCreateViewModalOpen,
     toggleCreateViewModal,
     createPageModal,
@@ -45,6 +48,12 @@ export const ProjectLevelModals = observer(function ProjectLevelModals(props: TP
       <CreateUpdateModuleModal
         isOpen={isCreateModuleModalOpen}
         onClose={() => toggleCreateModuleModal(false)}
+        workspaceSlug={workspaceSlug.toString()}
+        projectId={projectId.toString()}
+      />
+      <CreateUpdateReleaseModal
+        isOpen={isCreateReleaseModalOpen}
+        onClose={() => toggleCreateReleaseModal(false)}
         workspaceSlug={workspaceSlug.toString()}
         projectId={projectId.toString()}
       />

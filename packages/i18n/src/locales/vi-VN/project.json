@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Thêm bản phát hành",
+    "create_release": "Tạo bản phát hành",
+    "update_release": "Cập nhật bản phát hành",
+    "delete_release": "Xóa bản phát hành",
+    "delete_confirmation": "Bạn có chắc muốn xóa bản phát hành \"{name}\" không? Thao tác này không thể hoàn tác.",
+    "release_now": "Phát hành ngay",
+    "scope": "Phạm vi",
+    "changelog": "Nhật ký thay đổi",
+    "changelog_placeholder": "Mô tả những thay đổi trong bản phát hành này…",
+    "add_work_items": "Thêm hạng mục công việc",
+    "remove_work_item": "Gỡ khỏi bản phát hành",
+    "work_items": "Hạng mục công việc",
+    "target_date": "Ngày mục tiêu",
+    "lead": "Người phụ trách",
+    "label": "Nhãn",
+    "tag": "Tag",
+    "status_label": "Trạng thái",
+    "no_lead": "Chưa có người phụ trách",
+    "no_labels": "Chưa có nhãn nào",
+    "no_tags": "Chưa có tag nào",
+    "status": {
+      "unreleased": "Chưa phát hành",
+      "released": "Đã phát hành",
+      "cancelled": "Đã hủy"
+    },
+    "tabs": {
+      "overview": "Tổng quan",
+      "scope": "Phạm vi",
+      "changelog": "Nhật ký thay đổi"
+    },
+    "form": {
+      "name_placeholder": "Tên bản phát hành",
+      "name_required": "Tên là bắt buộc",
+      "name_too_long": "Tên phải ngắn hơn 255 ký tự",
+      "description_placeholder": "Mô tả bản phát hành này"
+    },
+    "quick_actions": {
+      "label": "Hiện các thao tác của bản phát hành"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Nhóm công việc thành các bản phát hành",
+        "description": "Nhóm các hạng mục công việc vào một bản phát hành, theo dõi phạm vi và công bố nhật ký thay đổi."
+      }
+    },
+    "disabled": {
+      "title": "Bản phát hành chưa được bật cho dự án này",
+      "description": "Bật bản phát hành trong tính năng dự án để nhóm công việc thành các phiên bản có thể bàn giao.",
+      "primary_button": "Quản lý tính năng"
+    },
+    "not_found": {
+      "title": "Bản phát hành không tồn tại",
+      "description": "Bản phát hành bạn tìm không tồn tại, đã được lưu trữ hoặc đã bị xóa.",
+      "primary_button": "Xem các bản phát hành khác"
+    },
+    "toast": {
+      "create": {
+        "success": "Đã tạo bản phát hành thành công.",
+        "error": "Không thể tạo bản phát hành. Vui lòng thử lại."
+      },
+      "update": {
+        "success": "Đã cập nhật bản phát hành thành công.",
+        "error": "Không thể cập nhật bản phát hành. Vui lòng thử lại."
+      },
+      "delete": {
+        "success": "Đã xóa bản phát hành thành công.",
+        "error": "Không thể xóa bản phát hành. Vui lòng thử lại."
+      },
+      "copy": {
+        "success": "Đã sao chép liên kết bản phát hành vào bộ nhớ tạm."
+      },
+      "released": {
+        "success": "Đã đánh dấu bản phát hành là đã phát hành."
+      },
+      "changelog": {
+        "error": "Không thể lưu nhật ký thay đổi. Vui lòng thử lại."
+      },
+      "add_work_items": {
+        "error": "Không thể thêm hạng mục công việc. Vui lòng thử lại."
+      },
+      "remove_work_item": {
+        "error": "Không thể gỡ hạng mục công việc. Vui lòng thử lại."
+      }
+    }
   }
 }

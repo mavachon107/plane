@@ -10,7 +10,14 @@ import { useTranslation } from "@plane/i18n";
 import { setPromiseToast } from "@plane/blocks/toast";
 import { Tooltip } from "@makeplane/propel/components/tooltip";
 import type { IProject } from "@plane/types";
-import { CyclesOutline, IntakeOutline, ModuleOutline, PagesOutline, ViewsOutline } from "@makeplane/propel/icons";
+import {
+  CyclesOutline,
+  IntakeOutline,
+  ModuleOutline,
+  PagesOutline,
+  ReleasesOutline,
+  ViewsOutline,
+} from "@makeplane/propel/icons";
 // components
 import { SettingsBoxedControlItem } from "@/components/settings/boxed-control-item";
 import { SettingsHeading } from "@/components/settings/heading";
@@ -43,6 +50,15 @@ const PROJECT_FEATURES_LIST = {
     title: "Modules",
     description: "Group work into sub-project-like set-ups with their own leads and assignees.",
     icon: <ModuleOutline width={20} height={20} className="flex-shrink-0 text-tertiary" />,
+    isPro: false,
+    isEnabled: true,
+  },
+  releases: {
+    key: "releases",
+    property: "release_view",
+    title: "Releases",
+    description: "Group work into shippable versions, with a changelog and a scope of work items.",
+    icon: <ReleasesOutline width={20} height={20} className="flex-shrink-0 text-tertiary" />,
     isPro: false,
     isEnabled: true,
   },

@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "릴리스 추가",
+    "create_release": "릴리스 만들기",
+    "update_release": "릴리스 업데이트",
+    "delete_release": "릴리스 삭제",
+    "delete_confirmation": "릴리스 \"{name}\"을(를) 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "release_now": "지금 릴리스",
+    "scope": "범위",
+    "changelog": "변경 내역",
+    "changelog_placeholder": "이번 릴리스에서 변경된 내용을 작성하세요…",
+    "add_work_items": "작업 항목 추가",
+    "remove_work_item": "릴리스에서 제거",
+    "work_items": "작업 항목",
+    "target_date": "목표 날짜",
+    "lead": "담당자",
+    "label": "레이블",
+    "tag": "태그",
+    "status_label": "상태",
+    "no_lead": "담당자 없음",
+    "no_labels": "아직 레이블이 없습니다",
+    "no_tags": "아직 태그가 없습니다",
+    "status": {
+      "unreleased": "릴리스되지 않음",
+      "released": "릴리스됨",
+      "cancelled": "취소됨"
+    },
+    "tabs": {
+      "overview": "개요",
+      "scope": "범위",
+      "changelog": "변경 내역"
+    },
+    "form": {
+      "name_placeholder": "릴리스 이름",
+      "name_required": "이름은 필수입니다",
+      "name_too_long": "이름은 255자 미만이어야 합니다",
+      "description_placeholder": "이 릴리스를 설명하세요"
+    },
+    "quick_actions": {
+      "label": "릴리스 작업 메뉴 표시"
+    },
+    "empty_state": {
+      "general": {
+        "title": "작업을 릴리스로 묶기",
+        "description": "작업 항목을 배포 가능한 버전으로 묶고 범위를 추적하며 변경 내역을 게시합니다."
+      }
+    },
+    "disabled": {
+      "title": "이 프로젝트에서 릴리스가 활성화되지 않았습니다",
+      "description": "프로젝트 기능에서 릴리스를 켜면 작업을 배포 가능한 버전으로 묶을 수 있습니다.",
+      "primary_button": "기능 관리"
+    },
+    "not_found": {
+      "title": "릴리스가 존재하지 않습니다",
+      "description": "찾으시는 릴리스가 존재하지 않거나 보관되었거나 삭제되었습니다.",
+      "primary_button": "다른 릴리스 보기"
+    },
+    "toast": {
+      "create": {
+        "success": "릴리스를 만들었습니다.",
+        "error": "릴리스를 만들지 못했습니다. 다시 시도해 주십시오."
+      },
+      "update": {
+        "success": "릴리스를 업데이트했습니다.",
+        "error": "릴리스를 업데이트하지 못했습니다. 다시 시도해 주십시오."
+      },
+      "delete": {
+        "success": "릴리스를 삭제했습니다.",
+        "error": "릴리스를 삭제하지 못했습니다. 다시 시도해 주십시오."
+      },
+      "copy": {
+        "success": "릴리스 링크를 클립보드에 복사했습니다."
+      },
+      "released": {
+        "success": "릴리스됨으로 표시했습니다."
+      },
+      "changelog": {
+        "error": "변경 내역을 저장하지 못했습니다. 다시 시도해 주십시오."
+      },
+      "add_work_items": {
+        "error": "작업 항목을 추가하지 못했습니다. 다시 시도해 주십시오."
+      },
+      "remove_work_item": {
+        "error": "작업 항목을 제거하지 못했습니다. 다시 시도해 주십시오."
+      }
+    }
   }
 }

@@ -414,5 +414,91 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Ajouter une version",
+    "create_release": "Créer une version",
+    "update_release": "Modifier la version",
+    "delete_release": "Supprimer la version",
+    "delete_confirmation": "Voulez-vous vraiment supprimer la version « {name} » ? Cette action est irréversible.",
+    "release_now": "Publier maintenant",
+    "scope": "Périmètre",
+    "changelog": "Journal des modifications",
+    "changelog_placeholder": "Décrivez ce qui a changé dans cette version…",
+    "add_work_items": "Ajouter des éléments de travail",
+    "remove_work_item": "Retirer de la version",
+    "work_items": "Éléments de travail",
+    "target_date": "Date cible",
+    "lead": "Responsable",
+    "label": "Étiquette",
+    "tag": "Tag",
+    "status_label": "Statut",
+    "no_lead": "Aucun responsable",
+    "no_labels": "Aucune étiquette",
+    "no_tags": "Aucun tag",
+    "status": {
+      "unreleased": "Non publiée",
+      "released": "Publiée",
+      "cancelled": "Annulée"
+    },
+    "tabs": {
+      "overview": "Aperçu",
+      "scope": "Périmètre",
+      "changelog": "Journal des modifications"
+    },
+    "form": {
+      "name_placeholder": "Nom de la version",
+      "name_required": "Le nom est obligatoire",
+      "name_too_long": "Le nom doit contenir moins de 255 caractères",
+      "description_placeholder": "Décrivez cette version"
+    },
+    "quick_actions": {
+      "label": "Afficher les actions de la version"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Regroupez le travail en versions",
+        "description": "Regroupez des éléments de travail dans une version livrable, suivez son périmètre et publiez un journal des modifications."
+      }
+    },
+    "disabled": {
+      "title": "Les versions ne sont pas activées pour ce projet",
+      "description": "Activez les versions dans les fonctionnalités du projet pour regrouper le travail en versions livrables.",
+      "primary_button": "Gérer les fonctionnalités"
+    },
+    "not_found": {
+      "title": "Cette version n’existe pas",
+      "description": "La version que vous recherchez n’existe pas, a été archivée ou a été supprimée.",
+      "primary_button": "Voir les autres versions"
+    },
+    "toast": {
+      "create": {
+        "success": "Version créée avec succès.",
+        "error": "Impossible de créer la version. Veuillez réessayer."
+      },
+      "update": {
+        "success": "Version mise à jour avec succès.",
+        "error": "Impossible de mettre à jour la version. Veuillez réessayer."
+      },
+      "delete": {
+        "success": "Version supprimée avec succès.",
+        "error": "Impossible de supprimer la version. Veuillez réessayer."
+      },
+      "copy": {
+        "success": "Lien de la version copié dans le presse-papiers."
+      },
+      "released": {
+        "success": "Version marquée comme publiée."
+      },
+      "changelog": {
+        "error": "Impossible d’enregistrer le journal des modifications. Veuillez réessayer."
+      },
+      "add_work_items": {
+        "error": "Impossible d’ajouter les éléments de travail. Veuillez réessayer."
+      },
+      "remove_work_item": {
+        "error": "Impossible de retirer l’élément de travail. Veuillez réessayer."
+      }
+    }
   }
 }
