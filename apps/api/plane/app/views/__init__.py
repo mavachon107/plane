@@ -83,6 +83,10 @@ from .workspace.cycle import WorkspaceCyclesEndpoint
 from .workspace.quick_link import QuickLinkViewSet
 from .workspace.sticky import WorkspaceStickyViewSet
 
+from .release.base import ReleaseViewSet, ReleaseChangelogEndpoint
+from .release.tag import ReleaseTagViewSet
+from .release.label import ReleaseLabelViewSet, ReleaseLabelAssociationEndpoint
+from .release.issue import ReleaseWorkItemEndpoint
 from .state.base import StateViewSet, IntakeStateEndpoint
 from .view.base import (
     WorkspaceViewViewSet,
