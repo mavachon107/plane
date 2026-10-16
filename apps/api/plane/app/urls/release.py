@@ -17,53 +17,53 @@ from plane.app.views import (
 urlpatterns = [
     # Releases
     path(
-        "workspaces/<str:slug>/releases/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/releases/",
         ReleaseViewSet.as_view({"get": "list", "post": "create"}),
-        name="workspace-release",
+        name="project-release",
     ),
     path(
-        "workspaces/<str:slug>/releases/<uuid:pk>/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/releases/<uuid:pk>/",
         ReleaseViewSet.as_view({"get": "retrieve", "patch": "partial_update", "delete": "destroy"}),
-        name="workspace-release",
+        name="project-release",
     ),
     # Changelog
     path(
-        "workspaces/<str:slug>/releases/<uuid:release_id>/changelog/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/releases/<uuid:release_id>/changelog/",
         ReleaseChangelogEndpoint.as_view(),
-        name="workspace-release-changelog",
+        name="project-release-changelog",
     ),
     # Work items
     path(
-        "workspaces/<str:slug>/releases/<uuid:release_id>/work-items/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/releases/<uuid:release_id>/work-items/",
         ReleaseWorkItemEndpoint.as_view(),
-        name="workspace-release-work-items",
+        name="project-release-work-items",
     ),
     # Labels attached to a release
     path(
-        "workspaces/<str:slug>/releases/<uuid:release_id>/labels/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/releases/<uuid:release_id>/labels/",
         ReleaseLabelAssociationEndpoint.as_view(),
-        name="workspace-release-labels",
+        name="project-release-labels",
     ),
     # Release tags
     path(
-        "workspaces/<str:slug>/release-tags/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/release-tags/",
         ReleaseTagViewSet.as_view({"get": "list", "post": "create"}),
-        name="workspace-release-tag",
+        name="project-release-tag",
     ),
     path(
-        "workspaces/<str:slug>/release-tags/<uuid:pk>/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/release-tags/<uuid:pk>/",
         ReleaseTagViewSet.as_view({"get": "retrieve", "patch": "partial_update", "delete": "destroy"}),
-        name="workspace-release-tag",
+        name="project-release-tag",
     ),
     # Release label palette
     path(
-        "workspaces/<str:slug>/release-labels/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/release-labels/",
         ReleaseLabelViewSet.as_view({"get": "list", "post": "create"}),
-        name="workspace-release-label",
+        name="project-release-label",
     ),
     path(
-        "workspaces/<str:slug>/release-labels/<uuid:pk>/",
+        "workspaces/<str:slug>/projects/<uuid:project_id>/release-labels/<uuid:pk>/",
         ReleaseLabelViewSet.as_view({"patch": "partial_update", "delete": "destroy"}),
-        name="workspace-release-label",
+        name="project-release-label",
     ),
 ]

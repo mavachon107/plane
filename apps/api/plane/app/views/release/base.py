@@ -17,7 +17,7 @@ from plane.app.serializers import (
     ReleaseWriteSerializer,
 )
 from plane.app.views.base import BaseAPIView, BaseViewSet
-from plane.db.models import Release, ReleaseChangelog, ReleaseLabelAssociation, Workspace
+from plane.db.models import Project, Release, ReleaseChangelog, ReleaseLabelAssociation
 
 
 class ReleaseViewSet(BaseViewSet):
@@ -31,8 +31,8 @@ class ReleaseViewSet(BaseViewSet):
         return self.filter_queryset(
             super()
             .get_queryset()
-            .filter(workspace__slug=self.kwargs.get("slug"))
-            .select_related("workspace", "tag", "lead")
+            .filter(workspace__slug=self.kwargs.get("slug"), project_id=self.kwargs.get("project_id"))
+            .select_related("workspace", "project", "tag", "lead")
             .prefetch_related(
                 Prefetch(
                     "label_releases",
@@ -49,18 +49,18 @@ class ReleaseViewSet(BaseViewSet):
             .distinct()
         )
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
-    def create(self, request, slug):
-        workspace = Workspace.objects.get(slug=slug)
-        serializer = ReleaseWriteSerializer(data=request.data, context={"workspace": workspace})
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER])
+    def create(self, request, slug, project_id):
+        project = Project.objects.get(workspace__slug=slug, pk=project_id)
+        serializer = ReleaseWriteSerializer(data=request.data, context={"project": project})
         if serializer.is_valid():
             serializer.save()
             release = self.get_queryset().get(pk=serializer.instance.id)
             return Response(ReleaseSerializer(release).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST], level="WORKSPACE")
-    def list(self, request, slug):
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])
+    def list(self, request, slug, project_id):
         releases = self.get_queryset().order_by("-sort_order")
         return self.paginate(
             request=request,
@@ -70,28 +70,28 @@ class ReleaseViewSet(BaseViewSet):
             ).data,
         )
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST], level="WORKSPACE")
-    def retrieve(self, request, slug, pk):
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])
+    def retrieve(self, request, slug, project_id, pk):
         release = self.get_queryset().get(pk=pk)
         return Response(
             ReleaseSerializer(release, fields=self.fields, expand=self.expand).data,
             status=status.HTTP_200_OK,
         )
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
-    def partial_update(self, request, slug, pk):
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER])
+    def partial_update(self, request, slug, project_id, pk):
         release = self.get_queryset().get(pk=pk)
         serializer = ReleaseWriteSerializer(
-            release, data=request.data, partial=True, context={"workspace": release.workspace}
+            release, data=request.data, partial=True, context={"project": release.project}
         )
         if serializer.is_valid():
             serializer.save()
             return Response(ReleaseSerializer(self.get_queryset().get(pk=pk)).data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN], level="WORKSPACE")
-    def destroy(self, request, slug, pk):
-        release = Release.objects.get(workspace__slug=slug, pk=pk)
+    @allow_permission(allowed_roles=[ROLE.ADMIN])
+    def destroy(self, request, slug, project_id, pk):
+        release = Release.objects.get(workspace__slug=slug, project_id=project_id, pk=pk)
         release.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -101,14 +101,14 @@ class ReleaseChangelogEndpoint(BaseAPIView):
 
     use_read_replica = True
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST], level="WORKSPACE")
-    def get(self, request, slug, release_id):
-        changelog = ReleaseChangelog.objects.get(workspace__slug=slug, release_id=release_id)
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])
+    def get(self, request, slug, project_id, release_id):
+        changelog = ReleaseChangelog.objects.get(workspace__slug=slug, project_id=project_id, release_id=release_id)
         return Response(ReleaseChangelogSerializer(changelog).data, status=status.HTTP_200_OK)
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
-    def patch(self, request, slug, release_id):
-        changelog = ReleaseChangelog.objects.get(workspace__slug=slug, release_id=release_id)
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER])
+    def patch(self, request, slug, project_id, release_id):
+        changelog = ReleaseChangelog.objects.get(workspace__slug=slug, project_id=project_id, release_id=release_id)
         serializer = ReleaseChangelogSerializer(changelog, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()

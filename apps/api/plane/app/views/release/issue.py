@@ -10,43 +10,38 @@ from rest_framework.response import Response
 from plane.app.permissions import ROLE, allow_permission
 from plane.app.serializers import IssueSerializer
 from plane.app.views.base import BaseAPIView
-from plane.db.models import Issue, ProjectMember, Release, ReleaseWorkItem
+from plane.db.models import Issue, Release, ReleaseWorkItem
 from plane.utils.grouper import issue_queryset_grouper
 
 
 class ReleaseWorkItemEndpoint(BaseAPIView):
     """List the work items in a release, and add or remove them.
 
-    Releases are workspace-scoped while work items are project-scoped, so reads are
-    narrowed to the projects the requesting user actually belongs to.
+    A release and its work items share a project, so membership of that project --
+    already proven by the permission decorator -- is the only access check needed.
     """
 
     use_read_replica = True
 
-    def _accessible_project_ids(self, request, slug):
-        return ProjectMember.objects.filter(member=request.user, workspace__slug=slug, is_active=True).values_list(
-            "project_id", flat=True
-        )
-
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST], level="WORKSPACE")
-    def get(self, request, slug, release_id):
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])
+    def get(self, request, slug, project_id, release_id):
         issues = Issue.issue_objects.filter(
             workspace__slug=slug,
+            project_id=project_id,
             issue_release__release_id=release_id,
             issue_release__deleted_at__isnull=True,
-            project_id__in=self._accessible_project_ids(request, slug),
         ).select_related("workspace", "project", "state", "parent")
 
         issues = issue_queryset_grouper(queryset=issues, group_by=None, sub_group_by=None)
 
         return self.paginate(
             request=request,
-            queryset=issues.order_by("-created_at").distinct(),
+            queryset=issues.order_by("-created_at"),
             on_results=lambda issues: IssueSerializer(issues, many=True, fields=self.fields, expand=self.expand).data,
         )
 
-    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
-    def post(self, request, slug, release_id):
+    @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER])
+    def post(self, request, slug, project_id, release_id):
         add_ids = request.data.get("add_ids", [])
         remove_ids = request.data.get("remove_ids", [])
 
@@ -56,19 +51,28 @@ class ReleaseWorkItemEndpoint(BaseAPIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        release = Release.objects.get(workspace__slug=slug, pk=release_id)
-        project_ids = self._accessible_project_ids(request, slug)
+        release = Release.objects.get(workspace__slug=slug, project_id=project_id, pk=release_id)
 
         if add_ids:
-            issues = Issue.issue_objects.filter(workspace__slug=slug, pk__in=add_ids, project_id__in=project_ids)
+            issues = Issue.issue_objects.filter(workspace__slug=slug, project_id=project_id, pk__in=add_ids)
             if len(issues) != len(set(add_ids)):
                 return Response(
-                    {"error": "Some work items do not exist or are not accessible"},
+                    {"error": "Some work items do not exist in this project"},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
 
             ReleaseWorkItem.objects.bulk_create(
-                [ReleaseWorkItem(release=release, issue=issue, workspace=release.workspace) for issue in issues],
+                [
+                    # bulk_create bypasses ProjectBaseModel.save(), which is what would
+                    # otherwise derive workspace -- so both are set explicitly here.
+                    ReleaseWorkItem(
+                        release=release,
+                        issue=issue,
+                        project=release.project,
+                        workspace=release.workspace,
+                    )
+                    for issue in issues
+                ],
                 batch_size=10,
                 ignore_conflicts=True,
             )
@@ -76,9 +80,9 @@ class ReleaseWorkItemEndpoint(BaseAPIView):
         if remove_ids:
             ReleaseWorkItem.objects.filter(
                 workspace__slug=slug,
+                project_id=project_id,
                 release_id=release_id,
                 issue_id__in=remove_ids,
-                issue__project_id__in=project_ids,
             ).delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)

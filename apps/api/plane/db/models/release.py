@@ -9,7 +9,7 @@ from django.db import models
 # Module imports
 from plane.utils.html_processor import strip_tags
 
-from .base import BaseModel
+from .project import ProjectBaseModel
 
 
 class ReleaseStatus(models.TextChoices):
@@ -18,10 +18,9 @@ class ReleaseStatus(models.TextChoices):
     CANCELLED = "cancelled", "Cancelled"
 
 
-class ReleaseTag(BaseModel):
+class ReleaseTag(ProjectBaseModel):
     """A version marker (``v1.2.0``) a release can point at."""
 
-    workspace = models.ForeignKey("db.Workspace", on_delete=models.CASCADE, related_name="release_tags")
     version = models.CharField(max_length=255, verbose_name="Tag Version")
     description = models.TextField(blank=True)
     commit_hash = models.CharField(max_length=255, blank=True, null=True)
@@ -30,9 +29,9 @@ class ReleaseTag(BaseModel):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["workspace", "version"],
+                fields=["project", "version"],
                 condition=models.Q(deleted_at__isnull=True),
-                name="release_tag_unique_workspace_version_when_deleted_at_null",
+                name="release_tag_unique_project_version_when_deleted_at_null",
             )
         ]
         verbose_name = "Release Tag"
@@ -44,10 +43,9 @@ class ReleaseTag(BaseModel):
         return str(self.version)
 
 
-class ReleaseLabel(BaseModel):
-    """A workspace-level label palette entry shared across releases."""
+class ReleaseLabel(ProjectBaseModel):
+    """A project-level label palette entry shared across that project's releases."""
 
-    workspace = models.ForeignKey("db.Workspace", on_delete=models.CASCADE, related_name="release_labels")
     name = models.CharField(max_length=255)
     color = models.CharField(max_length=255, blank=True)
     sort_order = models.FloatField(default=65535)
@@ -55,9 +53,9 @@ class ReleaseLabel(BaseModel):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["workspace", "name"],
+                fields=["project", "name"],
                 condition=models.Q(deleted_at__isnull=True),
-                name="release_label_unique_workspace_name_when_deleted_at_null",
+                name="release_label_unique_project_name_when_deleted_at_null",
             )
         ]
         verbose_name = "Release Label"
@@ -67,7 +65,7 @@ class ReleaseLabel(BaseModel):
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            largest = ReleaseLabel.objects.filter(workspace=self.workspace).aggregate(largest=models.Max("sort_order"))[
+            largest = ReleaseLabel.objects.filter(project=self.project).aggregate(largest=models.Max("sort_order"))[
                 "largest"
             ]
             if largest is not None:
@@ -79,10 +77,9 @@ class ReleaseLabel(BaseModel):
         return str(self.name)
 
 
-class Release(BaseModel):
-    """A workspace-scoped release that work items are shipped under."""
+class Release(ProjectBaseModel):
+    """A project-scoped release that work items are shipped under."""
 
-    workspace = models.ForeignKey("db.Workspace", on_delete=models.CASCADE, related_name="releases")
     name = models.CharField(max_length=255, verbose_name="Release Name")
 
     description = models.JSONField(blank=True, default=dict)
@@ -126,6 +123,13 @@ class Release(BaseModel):
     external_id = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "project"],
+                condition=models.Q(deleted_at__isnull=True),
+                name="release_unique_name_project_when_deleted_at_null",
+            )
+        ]
         verbose_name = "Release"
         verbose_name_plural = "Releases"
         db_table = "releases"
@@ -139,7 +143,7 @@ class Release(BaseModel):
             else strip_tags(self.description_html)
         )
         if self._state.adding:
-            largest = Release.objects.filter(workspace=self.workspace).aggregate(largest=models.Max("sort_order"))[
+            largest = Release.objects.filter(project=self.project).aggregate(largest=models.Max("sort_order"))[
                 "largest"
             ]
             if largest is not None:
@@ -151,10 +155,9 @@ class Release(BaseModel):
         return str(self.name)
 
 
-class ReleaseChangelog(BaseModel):
+class ReleaseChangelog(ProjectBaseModel):
     """The customer-facing notes for a release, created empty alongside it."""
 
-    workspace = models.ForeignKey("db.Workspace", on_delete=models.CASCADE, related_name="release_changelogs")
     release = models.OneToOneField("db.Release", on_delete=models.CASCADE, related_name="changelog")
 
     description = models.JSONField(blank=True, default=dict)
@@ -181,10 +184,9 @@ class ReleaseChangelog(BaseModel):
         return f"{self.release.name} <changelog>"
 
 
-class ReleaseLabelAssociation(BaseModel):
+class ReleaseLabelAssociation(ProjectBaseModel):
     """Attaches a palette label to a release."""
 
-    workspace = models.ForeignKey("db.Workspace", on_delete=models.CASCADE, related_name="release_label_associations")
     release = models.ForeignKey("db.Release", on_delete=models.CASCADE, related_name="label_releases")
     label = models.ForeignKey("db.ReleaseLabel", on_delete=models.CASCADE, related_name="label_releases")
 
@@ -205,10 +207,9 @@ class ReleaseLabelAssociation(BaseModel):
         return f"{self.release.name} {self.label.name}"
 
 
-class ReleaseWorkItem(BaseModel):
+class ReleaseWorkItem(ProjectBaseModel):
     """Associates a work item with a release."""
 
-    workspace = models.ForeignKey("db.Workspace", on_delete=models.CASCADE, related_name="release_work_items")
     release = models.ForeignKey("db.Release", on_delete=models.CASCADE, related_name="issue_release")
     issue = models.ForeignKey("db.Issue", on_delete=models.CASCADE, related_name="issue_release")
     sort_order = models.FloatField(default=65535)

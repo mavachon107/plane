@@ -44,7 +44,15 @@ class ReleaseTagSerializer(BaseSerializer):
     class Meta:
         model = ReleaseTag
         fields = "__all__"
-        read_only_fields = ["workspace", "created_by", "updated_by", "created_at", "updated_at", "deleted_at"]
+        read_only_fields = [
+            "workspace",
+            "project",
+            "created_by",
+            "updated_by",
+            "created_at",
+            "updated_at",
+            "deleted_at",
+        ]
 
     def validate_version(self, value):
         value = value.strip()
@@ -64,7 +72,15 @@ class ReleaseLabelSerializer(BaseSerializer):
     class Meta:
         model = ReleaseLabel
         fields = "__all__"
-        read_only_fields = ["workspace", "created_by", "updated_by", "created_at", "updated_at", "deleted_at"]
+        read_only_fields = [
+            "workspace",
+            "project",
+            "created_by",
+            "updated_by",
+            "created_at",
+            "updated_at",
+            "deleted_at",
+        ]
 
     def validate_name(self, value):
         value = value.strip()
@@ -98,6 +114,7 @@ class ReleaseWriteSerializer(BaseSerializer):
         fields = "__all__"
         read_only_fields = [
             "workspace",
+            "project",
             "labels",
             "created_by",
             "updated_by",
@@ -122,6 +139,18 @@ class ReleaseWriteSerializer(BaseSerializer):
         if release_date and target_date and target_date < release_date:
             raise serializers.ValidationError("Target date cannot precede release date")
 
+        # `tag` and `label_ids` resolve against every row in their tables, so without this
+        # a caller could attach another project's tag or label by passing its id.
+        project = self.context.get("project") or getattr(self.instance, "project", None)
+        if project:
+            tag = data.get("tag")
+            if tag and tag.project_id != project.id:
+                raise serializers.ValidationError({"tag_id": "Tag does not belong to this project"})
+
+            labels = data.get("label_ids")
+            if labels and any(label.project_id != project.id for label in labels):
+                raise serializers.ValidationError({"label_ids": "Labels do not belong to this project"})
+
         return data
 
     def validate_name(self, value):
@@ -138,6 +167,9 @@ class ReleaseWriteSerializer(BaseSerializer):
                 ReleaseLabelAssociation(
                     release=release,
                     label=label,
+                    # bulk_create bypasses ProjectBaseModel.save(), which is what would
+                    # otherwise derive workspace -- so both are set explicitly here.
+                    project=release.project,
                     workspace=release.workspace,
                     created_by=release.created_by,
                     updated_by=release.updated_by,
@@ -150,17 +182,18 @@ class ReleaseWriteSerializer(BaseSerializer):
 
     def create(self, validated_data):
         labels = validated_data.pop("label_ids", None)
-        workspace = self.context["workspace"]
+        project = self.context["project"]
 
-        if Release.objects.filter(name=validated_data.get("name"), workspace=workspace).exists():
+        if Release.objects.filter(name=validated_data.get("name"), project=project).exists():
             raise serializers.ValidationError({"error": "Release with this name already exists"})
 
-        release = Release.objects.create(**validated_data, workspace=workspace)
+        # workspace is derived from project by ProjectBaseModel.save()
+        release = Release.objects.create(**validated_data, project=project)
 
         # A changelog is created empty with the release, so reads always find one.
         ReleaseChangelog.objects.create(
             release=release,
-            workspace=workspace,
+            project=project,
             created_by=release.created_by,
             updated_by=release.updated_by,
         )
@@ -174,7 +207,7 @@ class ReleaseWriteSerializer(BaseSerializer):
         labels = validated_data.pop("label_ids", None)
 
         name = validated_data.get("name")
-        if name and Release.objects.filter(name=name, workspace=instance.workspace).exclude(id=instance.id).exists():
+        if name and Release.objects.filter(name=name, project=instance.project).exclude(id=instance.id).exists():
             raise serializers.ValidationError({"error": "Release with this name already exists"})
 
         if labels is not None:
@@ -214,6 +247,7 @@ class ReleaseSerializer(DynamicBaseSerializer):
             "external_source",
             "external_id",
             "workspace",
+            "project",
             "created_by",
             "updated_by",
             "created_at",
@@ -229,6 +263,7 @@ class ReleaseChangelogSerializer(BaseSerializer):
             "id",
             "release",
             "workspace",
+            "project",
             "description",
             "description_html",
             "description_stripped",
@@ -236,7 +271,15 @@ class ReleaseChangelogSerializer(BaseSerializer):
             "created_at",
             "updated_at",
         ]
-        read_only_fields = ["id", "release", "workspace", "description_stripped", "created_at", "updated_at"]
+        read_only_fields = [
+            "id",
+            "release",
+            "workspace",
+            "project",
+            "description_stripped",
+            "created_at",
+            "updated_at",
+        ]
 
     def validate(self, data):
         return _validate_description(data)
@@ -246,4 +289,12 @@ class ReleaseWorkItemSerializer(BaseSerializer):
     class Meta:
         model = ReleaseWorkItem
         fields = "__all__"
-        read_only_fields = ["workspace", "release", "created_by", "updated_by", "created_at", "updated_at"]
+        read_only_fields = [
+            "workspace",
+            "project",
+            "release",
+            "created_by",
+            "updated_by",
+            "created_at",
+            "updated_at",
+        ]
