@@ -771,6 +771,7 @@ class IssueSerializer(DynamicBaseSerializer):
     # ids
     cycle_id = serializers.PrimaryKeyRelatedField(read_only=True)
     module_ids = serializers.ListField(child=serializers.UUIDField(), required=False)
+    release_ids = serializers.ListField(child=serializers.UUIDField(), required=False)
 
     # Many to many
     label_ids = serializers.ListField(child=serializers.UUIDField(), required=False)
@@ -798,6 +799,7 @@ class IssueSerializer(DynamicBaseSerializer):
             "parent_id",
             "cycle_id",
             "module_ids",
+            "release_ids",
             "label_ids",
             "assignee_ids",
             "sub_issues_count",

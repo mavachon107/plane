@@ -436,6 +436,8 @@
     "no_lead": "Відповідального не призначено",
     "no_labels": "Міток поки немає",
     "no_tags": "Тегів поки немає",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Не випущено",
       "released": "Випущено",

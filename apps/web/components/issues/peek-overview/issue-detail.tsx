@@ -27,6 +27,7 @@ import { WorkItemVersionService } from "@/services/issue";
 // local components
 import type { TIssueOperations } from "../issue-detail";
 import { IssueParentDetail } from "../issue-detail/parent";
+import { IssueQuickProperties } from "../issue-detail/quick-properties";
 import { IssueReaction } from "../issue-detail/reactions";
 import { IssueTitleInput } from "../title-input";
 // services init
@@ -103,6 +104,14 @@ export const PeekOverviewIssueDetails = observer(function PeekOverviewIssueDetai
         issueOperations={issueOperations}
         disabled={disabled || isArchived}
         value={issue.name}
+      />
+
+      <IssueQuickProperties
+        workspaceSlug={workspaceSlug}
+        projectId={issue.project_id}
+        issueId={issue.id}
+        issueOperations={issueOperations}
+        disabled={disabled || isArchived}
       />
 
       <DescriptionInput

@@ -436,6 +436,8 @@
     "no_lead": "Chưa có người phụ trách",
     "no_labels": "Chưa có nhãn nào",
     "no_tags": "Chưa có tag nào",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Chưa phát hành",
       "released": "Đã phát hành",

@@ -436,6 +436,8 @@
     "no_lead": "Sorumlu yok",
     "no_labels": "Henüz etiket yok",
     "no_tags": "Henüz tag yok",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Yayınlanmadı",
       "released": "Yayınlandı",

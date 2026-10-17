@@ -436,6 +436,8 @@
     "no_lead": "尚無負責人",
     "no_labels": "尚無標籤",
     "no_tags": "尚無標記",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "未發布",
       "released": "已發布",

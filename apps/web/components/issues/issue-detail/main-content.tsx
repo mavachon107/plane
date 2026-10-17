@@ -30,6 +30,7 @@ import { PeekOverviewProperties } from "../peek-overview/properties";
 import { IssueTitleInput } from "../title-input";
 import { IssueActivity } from "./issue-activity";
 import { IssueParentDetail } from "./parent";
+import { IssueQuickProperties } from "./quick-properties";
 import { IssueReaction } from "./reactions";
 import type { TIssueOperations } from "./root";
 // services init
@@ -104,6 +105,14 @@ export const IssueMainContent = observer(function IssueMainContent(props: Props)
           issueOperations={issueOperations}
           disabled={isArchived || !isEditable}
           value={issue.name}
+        />
+
+        <IssueQuickProperties
+          workspaceSlug={workspaceSlug}
+          projectId={issue.project_id}
+          issueId={issue.id}
+          issueOperations={issueOperations}
+          disabled={isArchived || !isEditable}
         />
 
         <DescriptionInput

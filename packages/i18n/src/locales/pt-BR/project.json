@@ -436,6 +436,8 @@
     "no_lead": "Sem responsável",
     "no_labels": "Ainda não há etiquetas",
     "no_tags": "Ainda não há tags",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Não publicada",
       "released": "Publicada",

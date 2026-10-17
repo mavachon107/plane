@@ -436,6 +436,8 @@
     "no_lead": "Tidak ada penanggung jawab",
     "no_labels": "Belum ada label",
     "no_tags": "Belum ada tag",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Belum dirilis",
       "released": "Sudah dirilis",

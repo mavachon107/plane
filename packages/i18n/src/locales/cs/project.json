@@ -436,6 +436,8 @@
     "no_lead": "Bez zodpovědné osoby",
     "no_labels": "Zatím žádné štítky",
     "no_tags": "Zatím žádné tagy",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Nepublikováno",
       "released": "Publikováno",

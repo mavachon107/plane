@@ -436,6 +436,8 @@
     "no_lead": "담당자 없음",
     "no_labels": "아직 레이블이 없습니다",
     "no_tags": "아직 태그가 없습니다",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "릴리스되지 않음",
       "released": "릴리스됨",

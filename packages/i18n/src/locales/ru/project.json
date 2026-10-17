@@ -436,6 +436,8 @@
     "no_lead": "Ответственный не назначен",
     "no_labels": "Меток пока нет",
     "no_tags": "Тегов пока нет",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Не выпущен",
       "released": "Выпущен",

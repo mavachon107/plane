@@ -436,6 +436,8 @@
     "no_lead": "პასუხისმგებელი არ არის",
     "no_labels": "იარლიყები ჯერ არ არის",
     "no_tags": "ტეგები ჯერ არ არის",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "გამოუქვეყნებელი",
       "released": "გამოქვეყნებული",

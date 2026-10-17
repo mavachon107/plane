@@ -436,6 +436,8 @@
     "no_lead": "リードなし",
     "no_labels": "ラベルはまだありません",
     "no_tags": "タグはまだありません",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "未リリース",
       "released": "リリース済み",

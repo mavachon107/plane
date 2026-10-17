@@ -436,6 +436,8 @@
     "no_lead": "Geen verantwoordelijke",
     "no_labels": "Nog geen labels",
     "no_tags": "Nog geen tags",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Niet gepubliceerd",
       "released": "Gepubliceerd",

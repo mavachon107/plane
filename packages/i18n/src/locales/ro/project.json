@@ -436,6 +436,8 @@
     "no_lead": "Fără responsabil",
     "no_labels": "Încă nu există etichete",
     "no_tags": "Încă nu există taguri",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
     "status": {
       "unreleased": "Nepublicată",
       "released": "Publicată",

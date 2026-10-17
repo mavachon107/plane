@@ -7,7 +7,7 @@
 import { observer } from "mobx-react";
 // plane imports
 import type { E_SORT_ORDER, TActivityFilters, EActivityFilterType } from "@plane/constants";
-import { BASE_ACTIVITY_FILTER_TYPES, filterActivityOnSelectedFilters } from "@plane/constants";
+import { BASE_ACTIVITY_FILTER_TYPES } from "@plane/constants";
 import type { TCommentsOperations } from "@plane/types";
 // components
 import { CommentCard } from "@/components/comments/card/root";
@@ -22,7 +22,8 @@ type TIssueActivityCommentRoot = {
   projectId: string;
   isIntakeIssue: boolean;
   issueId: string;
-  selectedFilters: TActivityFilters[];
+  /** Event types to show; `null` shows everything. */
+  selectedFilters: TActivityFilters[] | null;
   activityOperations: TCommentsOperations;
   showAccessSpecifier?: boolean;
   disabled?: boolean;
@@ -53,7 +54,9 @@ export const IssueActivityCommentRoot = observer(function IssueActivityCommentRo
 
   if (activityAndComments.length <= 0) return null;
 
-  const filteredActivityAndComments = filterActivityOnSelectedFilters(activityAndComments, selectedFilters);
+  const filteredActivityAndComments = selectedFilters
+    ? activityAndComments.filter((item) => selectedFilters.includes(item.activity_type as TActivityFilters))
+    : activityAndComments;
 
   return (
     <div>
