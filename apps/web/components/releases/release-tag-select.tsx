@@ -51,8 +51,9 @@ export const ReleaseTagSelect = observer(function ReleaseTagSelect(props: Props)
         prependIcon={(selectedTags) =>
           selectedTags.length > 0 ? undefined : <ReleaseTagOutline className="h-4 w-4" />
         }
-        label={(selectedTags) => selectedTags[0]?.version ?? t("project_releases.tag")}
-      />
+      >
+        {(selectedTags) => <span className="truncate">{selectedTags[0]?.version ?? t("project_releases.tag")}</span>}
+      </Select.Trigger>
     </Select>
   );
 });

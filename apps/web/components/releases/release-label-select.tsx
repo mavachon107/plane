@@ -54,17 +54,17 @@ export const ReleaseLabelSelect = observer(function ReleaseLabelSelect(props: Pr
       disabled={disabled}
       emptyMessage={t("project_releases.no_labels")}
     >
-      <Select.Trigger<IReleaseLabel>
-        disabled={disabled}
-        variant="select-ghost-md"
-        label={(selectedLabels) =>
-          selectedLabels.length === 0
-            ? t("project_releases.label")
-            : selectedLabels.length === 1
-              ? selectedLabels[0].name
-              : t("labels_count", { count: selectedLabels.length })
-        }
-      />
+      <Select.Trigger<IReleaseLabel> disabled={disabled} variant="select-ghost-md">
+        {(selectedLabels) => (
+          <span className="truncate">
+            {selectedLabels.length === 0
+              ? t("project_releases.label")
+              : selectedLabels.length === 1
+                ? selectedLabels[0].name
+                : t("labels_count", { count: selectedLabels.length })}
+          </span>
+        )}
+      </Select.Trigger>
     </Select>
   );
 });

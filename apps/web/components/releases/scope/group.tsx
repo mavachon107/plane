@@ -37,7 +37,7 @@ export const ReleaseScopeGroup = observer(function ReleaseScopeGroup(props: Prop
       trigger={
         <>
           <span className="text-13 font-medium text-primary">{STATE_GROUPS[group].label}</span>
-          <span className="text-13 text-placeholder">{workItemIds.length}</span>
+          <span className="ml-2 text-13 text-placeholder">{workItemIds.length}</span>
         </>
       }
     >
