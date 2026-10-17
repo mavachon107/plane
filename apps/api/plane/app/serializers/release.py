@@ -221,6 +221,7 @@ class ReleaseSerializer(DynamicBaseSerializer):
     label_details = serializers.SerializerMethodField()
     work_item_count = serializers.IntegerField(read_only=True)
     completed_work_item_count = serializers.IntegerField(read_only=True)
+    cancelled_work_item_count = serializers.IntegerField(read_only=True)
 
     def get_label_details(self, obj):
         """Only labels still attached -- see the note in ``ReleaseWriteSerializer``."""
@@ -246,6 +247,7 @@ class ReleaseSerializer(DynamicBaseSerializer):
             "sort_order",
             "work_item_count",
             "completed_work_item_count",
+            "cancelled_work_item_count",
             "external_source",
             "external_id",
             "workspace",

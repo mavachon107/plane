@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Сортировать по",
       "manual": "Вручную — Ранг",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Последние созданные",
       "last_updated": "Последние обновленные",
       "start_date": "Дата начала",

@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Urutkan berdasarkan",
       "manual": "Manual - Peringkat",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Terakhir dibuat",
       "last_updated": "Terakhir diperbarui",
       "start_date": "Tanggal mulai",

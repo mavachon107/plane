@@ -5,6 +5,7 @@
 from django.urls import path
 
 from plane.app.views import (
+    ReleaseActivityEndpoint,
     ReleaseChangelogEndpoint,
     ReleaseLabelAssociationEndpoint,
     ReleaseLabelViewSet,
@@ -25,6 +26,12 @@ urlpatterns = [
         "workspaces/<str:slug>/projects/<uuid:project_id>/releases/<uuid:pk>/",
         ReleaseViewSet.as_view({"get": "retrieve", "patch": "partial_update", "delete": "destroy"}),
         name="project-release",
+    ),
+    # Activity
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/releases/<uuid:release_id>/activity/",
+        ReleaseActivityEndpoint.as_view(),
+        name="project-release-activity",
     ),
     # Changelog
     path(

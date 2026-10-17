@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Sırala",
       "manual": "Manuel - Sıra",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Son oluşturulan",
       "last_updated": "Son güncellenen",
       "start_date": "Başlangıç tarihi",

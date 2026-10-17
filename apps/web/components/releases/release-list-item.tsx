@@ -7,7 +7,6 @@
 import { useRef } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
-import { CircularProgress } from "@makeplane/propel/components/circular-progress";
 // components
 import { ListItem } from "@/components/core/list";
 // hooks
@@ -41,21 +40,13 @@ export const ReleaseListItem = observer(function ReleaseListItem(props: Props) {
     <ListItem
       title={releaseDetails.name}
       itemLink={`/${workspaceSlug}/projects/${projectId}/releases/${releaseDetails.id}`}
-      prependTitleElement={
-        <div className="relative flex size-[30px] items-center justify-center">
-          <div className="absolute inset-0 flex scale-150 items-center justify-center">
-            <CircularProgress
-              value={progress}
-              size="md"
-              variant={progress === 100 ? "success" : "brand"}
-              aria-label="Release progress"
-            />
-          </div>
-        </div>
-      }
-      appendTitleElement={<span className="text-xs flex-shrink-0 text-tertiary">{progress}%</span>}
       actionableItems={
-        <ReleaseListItemAction releaseId={releaseId} releaseDetails={releaseDetails} parentRef={parentRef} />
+        <ReleaseListItemAction
+          releaseId={releaseId}
+          releaseDetails={releaseDetails}
+          parentRef={parentRef}
+          progress={progress}
+        />
       }
       parentRef={parentRef}
     />

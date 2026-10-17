@@ -35,9 +35,9 @@ export const orderReleases = (releases: IRelease[], orderByKey: TReleaseOrderByO
   if (["work_items_length", "-work_items_length"].includes(orderByKey))
     return sortBy(releases, [(r) => (orderByKey === "work_items_length" ? r.work_item_count : -r.work_item_count)]);
   if (orderByKey === "target_date") return sortBy(releases, [(r) => r.release_date]);
-  if (orderByKey === "-target_date") return sortBy(releases, [(r) => !r.release_date]);
+  if (orderByKey === "-target_date") return sortBy(releases, [(r) => r.release_date]).toReversed();
   if (orderByKey === "created_at") return sortBy(releases, [(r) => r.created_at]);
-  if (orderByKey === "-created_at") return sortBy(releases, [(r) => !r.created_at]);
+  if (orderByKey === "-created_at") return sortBy(releases, [(r) => r.created_at]).toReversed();
   if (orderByKey === "sort_order") return sortBy(releases, [(r) => r.sort_order]);
 
   return releases;

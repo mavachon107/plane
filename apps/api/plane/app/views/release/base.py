@@ -58,6 +58,16 @@ class ReleaseViewSet(BaseViewSet):
                     distinct=True,
                 )
             )
+            .annotate(
+                cancelled_work_item_count=Count(
+                    "issue_release",
+                    filter=Q(
+                        issue_release__deleted_at__isnull=True,
+                        issue_release__issue__state__group="cancelled",
+                    ),
+                    distinct=True,
+                )
+            )
             .distinct()
         )
 

@@ -63,7 +63,7 @@ export class ReleaseFilterStore implements IReleaseFilterStore {
         if (!projectId) return;
         if (!this.displayFilters[projectId]) {
           runInAction(() => {
-            set(this.displayFilters, [projectId], { order_by: "sort_order" });
+            set(this.displayFilters, [projectId], { order_by: "-created_at" });
             set(this.filters, [projectId], {});
             this.searchQuery = "";
             this.activeStatusTab = "unreleased";

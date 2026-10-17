@@ -5,6 +5,7 @@
  */
 
 import { observer } from "mobx-react";
+import { ReleasesFilled } from "@makeplane/propel/icons";
 // plane imports
 import { RELEASE_STATUS } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
@@ -38,13 +39,11 @@ export const ReleaseStatusDropdown = observer(function ReleaseStatusDropdown(pro
       showSearch={false}
       pinSelected={false}
     >
-      <Select.Trigger variant="pill-md" className="h-6 border-none bg-transparent p-0">
-        <span
-          className="text-xs flex items-center gap-1 rounded px-2 py-0.5 font-medium"
-          style={{ color: releaseStatus.color, backgroundColor: `${releaseStatus.color}20` }}
-        >
-          {t(releaseStatus.i18n_label)}
-        </span>
+      <Select.Trigger
+        variant="pill-md"
+        prependIcon={<ReleasesFilled className="h-4 w-4" style={{ color: releaseStatus.color }} />}
+      >
+        <span className="truncate">{t(releaseStatus.i18n_label)}</span>
       </Select.Trigger>
     </Select>
   );

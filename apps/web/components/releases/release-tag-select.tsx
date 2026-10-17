@@ -10,6 +10,7 @@ import { ReleaseTagOutline } from "@makeplane/propel/icons";
 import { useTranslation } from "@plane/i18n";
 import type { IReleaseTag } from "@plane/types";
 import { Select } from "@plane/blocks/select";
+import type { SelectVariant } from "@plane/blocks/select";
 // hooks
 import { useRelease } from "@/hooks/store/use-release";
 
@@ -18,11 +19,12 @@ type Props = {
   value: string | null;
   onChange: (tagId: string | null) => void;
   disabled?: boolean;
+  variant?: SelectVariant;
 };
 
 /** Picks a version marker from the project's release tags. */
 export const ReleaseTagSelect = observer(function ReleaseTagSelect(props: Props) {
-  const { projectId, value, onChange, disabled = false } = props;
+  const { projectId, value, onChange, disabled = false, variant = "pill-md" } = props;
   const { t } = useTranslation();
   const { getProjectTags } = useRelease();
 
@@ -47,7 +49,7 @@ export const ReleaseTagSelect = observer(function ReleaseTagSelect(props: Props)
     >
       <Select.Trigger<IReleaseTag>
         disabled={disabled}
-        variant="select-ghost-md"
+        variant={variant}
         prependIcon={(selectedTags) =>
           selectedTags.length > 0 ? undefined : <ReleaseTagOutline className="h-4 w-4" />
         }

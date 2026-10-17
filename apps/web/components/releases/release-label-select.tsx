@@ -5,10 +5,12 @@
  */
 
 import { observer } from "mobx-react";
+import { ReleaseTagOutline } from "@makeplane/propel/icons";
 // plane imports
 import { useTranslation } from "@plane/i18n";
 import type { IReleaseLabel } from "@plane/types";
 import { Select } from "@plane/blocks/select";
+import type { SelectVariant } from "@plane/blocks/select";
 // hooks
 import { useRelease } from "@/hooks/store/use-release";
 
@@ -18,6 +20,7 @@ type Props = {
   value: string[];
   onChange: (labelIds: string[]) => void;
   disabled?: boolean;
+  variant?: SelectVariant;
 };
 
 const LabelDot = ({ color }: { color: string }) => (
@@ -31,7 +34,7 @@ const LabelDot = ({ color }: { color: string }) => (
  * labels, which are a different table from the release palette.
  */
 export const ReleaseLabelSelect = observer(function ReleaseLabelSelect(props: Props) {
-  const { projectId, value, onChange, disabled = false } = props;
+  const { projectId, value, onChange, disabled = false, variant = "pill-md" } = props;
   const { t } = useTranslation();
   const { getProjectLabels } = useRelease();
 
@@ -54,7 +57,11 @@ export const ReleaseLabelSelect = observer(function ReleaseLabelSelect(props: Pr
       disabled={disabled}
       emptyMessage={t("project_releases.no_labels")}
     >
-      <Select.Trigger<IReleaseLabel> disabled={disabled} variant="select-ghost-md">
+      <Select.Trigger<IReleaseLabel>
+        disabled={disabled}
+        variant={variant}
+        prependIcon={<ReleaseTagOutline className="h-4 w-4" />}
+      >
         {(selectedLabels) => (
           <span className="truncate">
             {selectedLabels.length === 0

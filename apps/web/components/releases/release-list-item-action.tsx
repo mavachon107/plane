@@ -7,8 +7,8 @@
 import type React from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
-import { UserAltOutline } from "@makeplane/propel/icons";
-import { Tooltip } from "@makeplane/propel/components/tooltip";
+import { CircularProgress } from "@makeplane/propel/components/circular-progress";
+import { DueDateOutline } from "@makeplane/propel/icons";
 // plane imports
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
@@ -17,7 +17,7 @@ import { getDate, renderFormattedPayloadDate } from "@plane/utils";
 import { DateSelect } from "@plane/blocks/property-select";
 import { setToast } from "@plane/blocks/toast";
 // components
-import { ButtonAvatars } from "@/components/dropdowns/member/avatar";
+import { MemberSelect } from "@/components/dropdowns/member/member-select";
 // hooks
 import { useRelease } from "@/hooks/store/use-release";
 import { useUserPermissions, useUserProfile } from "@/hooks/store/user";
@@ -31,10 +31,12 @@ type Props = {
   releaseId: string;
   releaseDetails: IRelease;
   parentRef: React.RefObject<HTMLDivElement | null>;
+  /** Completion percentage, 0-100. */
+  progress: number;
 };
 
 export const ReleaseListItemAction = observer(function ReleaseListItemAction(props: Props) {
-  const { releaseId, releaseDetails, parentRef } = props;
+  const { releaseId, releaseDetails, parentRef, progress } = props;
   // router
   const { workspaceSlug, projectId } = useParams();
   // plane hooks
@@ -89,6 +91,16 @@ export const ReleaseListItemAction = observer(function ReleaseListItemAction(pro
 
   return (
     <>
+      <div className="flex flex-shrink-0 items-center gap-2">
+        <CircularProgress
+          value={progress}
+          size="md"
+          variant={progress === 100 ? "success" : "brand"}
+          aria-label="Release progress"
+        />
+        <span className="text-xs w-9 text-tertiary">{progress}%</span>
+      </div>
+
       {/* The API field is release_date; the UI has always labelled it "Target date". */}
       <DateSelect
         value={getDate(releaseDetails.release_date) ?? null}
@@ -98,7 +110,8 @@ export const ReleaseListItemAction = observer(function ReleaseListItemAction(pro
           });
         }}
         placeholder={t("project_releases.target_date")}
-        variant="select-ghost-md"
+        variant="pill-md"
+        icon={<DueDateOutline className="h-4 w-4" />}
         weekStartsOn={userProfile?.start_of_the_week}
         disabled={!isEditingAllowed}
         clearable
@@ -111,13 +124,18 @@ export const ReleaseListItemAction = observer(function ReleaseListItemAction(pro
         disabled={!isEditingAllowed}
       />
 
-      {releaseDetails.lead ? (
-        <ButtonAvatars showTooltip userIds={releaseDetails.lead} />
-      ) : (
-        <Tooltip label={t("project_releases.no_lead")}>
-          <UserAltOutline className="h-4 w-4 text-tertiary" />
-        </Tooltip>
-      )}
+      <MemberSelect
+        value={releaseDetails.lead}
+        onChange={(memberId) => {
+          void handleReleaseDetailsChange({ lead: memberId });
+        }}
+        projectId={project}
+        placeholder={t("project_releases.lead")}
+        variant="pill-md"
+        clearable
+        clearLabel={t("project_releases.no_lead")}
+        disabled={!isEditingAllowed}
+      />
 
       <ReleaseLabelSelect
         projectId={project}

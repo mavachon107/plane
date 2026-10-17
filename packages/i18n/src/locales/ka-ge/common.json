@@ -517,6 +517,9 @@
     "order_by": {
       "label": "დალაგება",
       "manual": "ხელით",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "ბოლო შექმნილი",
       "last_updated": "ბოლო განახლებული",
       "start_date": "დაწყების თარიღი",

@@ -13,6 +13,7 @@ import type {
   IReleaseTag,
   TIssue,
   TPaginatedResponse,
+  TReleaseActivity,
   TReleaseWorkItemPayload,
 } from "@plane/types";
 // services
@@ -95,6 +96,16 @@ export class ReleaseService extends APIService {
     data: Partial<IReleaseChangelog>
   ): Promise<IReleaseChangelog> {
     return this.patch(`${this.basePath(workspaceSlug, projectId)}/releases/${releaseId}/changelog/`, data)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  // ------------------------------------------------------------------ activity
+
+  async getActivity(workspaceSlug: string, projectId: string, releaseId: string): Promise<TReleaseActivity[]> {
+    return this.get(`${this.basePath(workspaceSlug, projectId)}/releases/${releaseId}/activity/`)
       .then((response) => response?.data)
       .catch((error) => {
         throw error?.response?.data;

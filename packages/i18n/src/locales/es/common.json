@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Ordenar por",
       "manual": "Manual - Clasificación",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Último creado",
       "last_updated": "Última actualización",
       "start_date": "Fecha de inicio",

@@ -52,7 +52,7 @@ export const ReleasesListView = observer(function ReleasesListView() {
         setActiveStatusTab(value as TReleaseStatus);
       }}
     >
-      <div className="-mb-3 pt-3">
+      <div className="pt-3 pb-3">
         <TabsList>
           {RELEASE_STATUS.map((status) => (
             <Tab key={status.value} value={status.value} label={t(status.i18n_label)} />

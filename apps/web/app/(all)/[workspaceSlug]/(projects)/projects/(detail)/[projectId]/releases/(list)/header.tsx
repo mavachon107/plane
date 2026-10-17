@@ -17,6 +17,7 @@ import { Header } from "@plane/blocks/layout";
 import { CommonProjectBreadcrumbs } from "@/components/breadcrumbs/common";
 import { useProjectCrumbProps } from "@/components/breadcrumbs/use-project-crumb-props";
 import { BreadcrumbLink } from "@/components/common/breadcrumb-link";
+import { ReleaseViewHeader } from "@/components/releases/release-view-header";
 // hooks
 import { useCommandPalette } from "@/hooks/store/use-command-palette";
 import { useProject } from "@/hooks/store/use-project";
@@ -63,6 +64,7 @@ export const ReleasesListHeader = observer(function ReleasesListHeader() {
         </div>
       </Header.LeftItem>
       <Header.RightItem>
+        <ReleaseViewHeader />
         {canUserCreateRelease ? (
           <Button
             variant="primary"

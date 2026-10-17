@@ -53,5 +53,5 @@ export const RELEASE_ORDER_BY_OPTIONS: {
   { i18n_label: "common.order_by.name", key: "name" },
   { i18n_label: "common.order_by.progress", key: "progress" },
   { i18n_label: "common.order_by.target_date", key: "target_date" },
-  { i18n_label: "common.order_by.last_created", key: "-created_at" },
+  { i18n_label: "common.sort.created_on", key: "created_at" },
 ];

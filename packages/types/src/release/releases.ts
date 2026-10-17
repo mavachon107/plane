@@ -60,6 +60,7 @@ export interface IRelease {
   sort_order: number;
   work_item_count: number;
   completed_work_item_count: number;
+  cancelled_work_item_count: number;
 
   external_source: string | null;
   external_id: string | null;
@@ -88,4 +89,19 @@ export interface IReleaseChangelog {
 export type TReleaseWorkItemPayload = {
   add_ids?: string[];
   remove_ids?: string[];
+};
+
+/** One entry of a release's activity feed. */
+export type TReleaseActivity = {
+  id: string;
+  verb: "created" | "added_work_item";
+  /** User id of whoever performed the action. */
+  actor: string | null;
+  created_at: string;
+  work_item: {
+    id: string;
+    name: string;
+    sequence_id: number;
+    project_identifier: string;
+  } | null;
 };
