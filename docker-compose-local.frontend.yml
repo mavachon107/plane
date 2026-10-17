@@ -1,0 +1,78 @@
+# Overlay for docker-compose-local.yml: adds the frontends (web, admin, space, live)
+# behind the Caddy proxy so the whole app is served from one origin.
+#
+#   docker compose -f docker-compose-local.yml -f docker-compose-local.frontend.yml up -d --build
+#
+# App: http://localhost:8080   God mode: /god-mode/   Spaces: /spaces/
+# The host ports for Redis (6380) and the API (8001) are remapped because 6379/8000
+# are taken by another local project; delete those two entries if yours are free.
+services:
+  plane-redis:
+    ports: !override
+      - "6380:6379"
+
+  api:
+    ports: !override
+      - "8001:8000"
+    environment:
+      WEB_URL: http://localhost:8080
+      CORS_ALLOWED_ORIGINS: http://localhost:8080
+      APP_BASE_URL: http://localhost:8080
+      ADMIN_BASE_URL: http://localhost:8080
+      SPACE_BASE_URL: http://localhost:8080
+
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile.web
+    restart: unless-stopped
+    # Upstream Caddyfile rate-limits 300 req/min per client IP; behind the proxy every
+    # request shares one IP, so a few page loads trigger 429s. Local copy raises it.
+    volumes:
+      - ./apps/web/caddy/Caddyfile.local:/etc/caddy/Caddyfile:ro
+    networks: [dev_env]
+    depends_on: [api]
+
+  admin:
+    build:
+      context: .
+      dockerfile: ./apps/admin/Dockerfile.admin
+    restart: unless-stopped
+    networks: [dev_env]
+    depends_on: [api, web]
+
+  space:
+    build:
+      context: .
+      dockerfile: ./apps/space/Dockerfile.space
+    restart: unless-stopped
+    networks: [dev_env]
+    depends_on: [api, web]
+
+  live:
+    build:
+      context: .
+      dockerfile: ./apps/live/Dockerfile.live
+    restart: unless-stopped
+    networks: [dev_env]
+    environment:
+      PORT: "3000"
+      API_BASE_URL: http://api:8000
+      LIVE_BASE_PATH: /live
+      LIVE_SERVER_SECRET_KEY: secret-key
+      REDIS_URL: redis://plane-redis:6379/
+
+  proxy:
+    build:
+      context: ./apps/proxy
+      dockerfile: Dockerfile.ce
+    restart: unless-stopped
+    networks: [dev_env]
+    env_file:
+      - .env
+    ports:
+      - "8080:80"
+    environment:
+      FILE_SIZE_LIMIT: ${FILE_SIZE_LIMIT:-5242880}
+      BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-uploads}
+    depends_on: [web, api, space, admin, live]
