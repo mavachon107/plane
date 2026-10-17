@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Tambah rilis",
+    "create_release": "Buat rilis",
+    "update_release": "Perbarui rilis",
+    "delete_release": "Hapus rilis",
+    "delete_confirmation": "Apakah Anda yakin ingin menghapus rilis \"{name}\"? Tindakan ini tidak dapat dibatalkan.",
+    "release_now": "Rilis sekarang",
+    "scope": "Cakupan",
+    "changelog": "Catatan perubahan",
+    "changelog_placeholder": "Jelaskan apa yang berubah pada rilis ini…",
+    "add_work_items": "Tambah item pekerjaan",
+    "remove_work_item": "Hapus dari rilis",
+    "work_items": "Item pekerjaan",
+    "target_date": "Tanggal target",
+    "lead": "Penanggung jawab",
+    "label": "Label",
+    "tag": "Tag",
+    "status_label": "Status",
+    "no_lead": "Tidak ada penanggung jawab",
+    "no_labels": "Belum ada label",
+    "no_tags": "Belum ada tag",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "Belum dirilis",
+      "released": "Sudah dirilis",
+      "cancelled": "Dibatalkan"
+    },
+    "tabs": {
+      "overview": "Ikhtisar",
+      "scope": "Cakupan",
+      "changelog": "Catatan perubahan"
+    },
+    "form": {
+      "name_placeholder": "Nama rilis",
+      "name_required": "Nama wajib diisi",
+      "name_too_long": "Nama harus kurang dari 255 karakter",
+      "description_placeholder": "Jelaskan rilis ini"
+    },
+    "quick_actions": {
+      "label": "Tampilkan tindakan rilis"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Kelompokkan pekerjaan ke dalam rilis",
+        "description": "Kelompokkan item pekerjaan ke dalam versi yang siap dikirim, lacak cakupannya, dan terbitkan catatan perubahan."
+      }
+    },
+    "disabled": {
+      "title": "Rilis belum diaktifkan untuk proyek ini",
+      "description": "Aktifkan Rilis di fitur proyek untuk mengelompokkan pekerjaan ke dalam versi yang siap dikirim.",
+      "primary_button": "Kelola fitur"
+    },
+    "not_found": {
+      "title": "Rilis tidak ada",
+      "description": "Rilis yang Anda cari tidak ada, telah diarsipkan, atau telah dihapus.",
+      "primary_button": "Lihat rilis lainnya"
+    },
+    "toast": {
+      "create": {
+        "success": "Rilis berhasil dibuat.",
+        "error": "Rilis tidak dapat dibuat. Silakan coba lagi."
+      },
+      "update": {
+        "success": "Rilis berhasil diperbarui.",
+        "error": "Rilis tidak dapat diperbarui. Silakan coba lagi."
+      },
+      "delete": {
+        "success": "Rilis berhasil dihapus.",
+        "error": "Rilis tidak dapat dihapus. Silakan coba lagi."
+      },
+      "copy": {
+        "success": "Tautan rilis disalin ke papan klip."
+      },
+      "released": {
+        "success": "Rilis ditandai sebagai sudah dirilis."
+      },
+      "changelog": {
+        "error": "Catatan perubahan tidak dapat disimpan. Silakan coba lagi."
+      },
+      "add_work_items": {
+        "error": "Item pekerjaan tidak dapat ditambahkan. Silakan coba lagi."
+      },
+      "remove_work_item": {
+        "error": "Item pekerjaan tidak dapat dihapus. Silakan coba lagi."
+      }
+    }
   }
 }

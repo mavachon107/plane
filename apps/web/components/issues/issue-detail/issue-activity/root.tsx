@@ -5,11 +5,11 @@
  */
 
 import { useMemo } from "react";
-import uniq from "lodash-es/uniq";
 import { observer } from "mobx-react";
+import { Tab, Tabs, TabsList } from "@makeplane/propel/components/tabs";
 // plane package imports
 import type { TActivityFilters } from "@plane/constants";
-import { E_SORT_ORDER, defaultActivityFilters } from "@plane/constants";
+import { E_SORT_ORDER, EActivityFilterType } from "@plane/constants";
 import { useLocalStorage } from "@plane/hooks";
 // i18n
 import { useTranslation } from "@plane/i18n";
@@ -23,7 +23,30 @@ import { useProject } from "@/hooks/store/use-project";
 import { IssueActivityCommentRoot } from "./activity-comment-root";
 import { useWorkItemCommentOperations } from "./helper";
 import { ActivitySortRoot } from "./sort-root";
-import { ActivityFilterRoot } from "./filter-root";
+
+type TActivityTab = "all" | "activity" | "comments" | "updates" | "transition" | "history";
+
+const ACTIVITY_TABS: { value: TActivityTab; i18nKey: string; filters: TActivityFilters[] | null }[] = [
+  { value: "all", i18nKey: "common.all", filters: null },
+  {
+    value: "activity",
+    i18nKey: "common.activity",
+    filters: [
+      EActivityFilterType.ACTIVITY,
+      EActivityFilterType.STATE,
+      EActivityFilterType.ASSIGNEE,
+      EActivityFilterType.DEFAULT,
+    ],
+  },
+  { value: "comments", i18nKey: "common.comments", filters: [EActivityFilterType.COMMENT] },
+  { value: "updates", i18nKey: "common.updates", filters: [EActivityFilterType.ACTIVITY] },
+  { value: "transition", i18nKey: "transition", filters: [EActivityFilterType.STATE] },
+  {
+    value: "history",
+    i18nKey: "history",
+    filters: [EActivityFilterType.ASSIGNEE, EActivityFilterType.DEFAULT],
+  },
+];
 
 type TIssueActivity = {
   workspaceSlug: string;
@@ -45,27 +68,10 @@ export const IssueActivity = observer(function IssueActivity(props: TIssueActivi
   // i18n
   const { t } = useTranslation();
   // hooks
-  const { setValue: setFilterValue, storedValue: selectedFilters } = useLocalStorage(
-    "issue_activity_filters",
-    defaultActivityFilters
-  );
+  const { setValue: setActiveTab, storedValue: storedTab } = useLocalStorage<TActivityTab>("issue_activity_tab", "all");
   const { setValue: setSortOrder, storedValue: sortOrder } = useLocalStorage("activity_sort_order", E_SORT_ORDER.ASC);
 
   const { getProjectById } = useProject();
-
-  // toggle filter
-  const toggleFilter = (filter: TActivityFilters) => {
-    if (!selectedFilters) return;
-    let _filters = [];
-    if (selectedFilters.includes(filter)) {
-      if (selectedFilters.length === 1) return selectedFilters; // Ensure at least one filter is applied
-      _filters = selectedFilters.filter((f) => f !== filter);
-    } else {
-      _filters = [...selectedFilters, filter];
-    }
-
-    setFilterValue(uniq(_filters));
-  };
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === E_SORT_ORDER.ASC ? E_SORT_ORDER.DESC : E_SORT_ORDER.ASC);
@@ -75,6 +81,9 @@ export const IssueActivity = observer(function IssueActivity(props: TIssueActivi
   const activityOperations = useWorkItemCommentOperations(workspaceSlug, projectId, issueId);
 
   const project = getProjectById(projectId);
+  const activeTab = ACTIVITY_TABS.find((tab) => tab.value === storedTab) ?? ACTIVITY_TABS[0];
+  // comments can only be written / read from the tabs that include them
+  const showCommentBox = !disabled && (activeTab.value === "all" || activeTab.value === "comments");
   const renderCommentCreationBox = useMemo(
     () => (
       <CommentCreate
@@ -92,36 +101,38 @@ export const IssueActivity = observer(function IssueActivity(props: TIssueActivi
   return (
     <div className="space-y-4">
       {/* header */}
-      <div className="flex items-center justify-between">
-        <div className="text-h5-medium text-primary">{t("common.activity")}</div>
-        <div className="flex items-center gap-2">
-          <ActivitySortRoot sortOrder={sortOrder || E_SORT_ORDER.ASC} toggleSort={toggleSortOrder} />
-          <ActivityFilterRoot
-            selectedFilters={selectedFilters || defaultActivityFilters}
-            toggleFilter={toggleFilter}
-            isIntakeIssue={isIntakeIssue}
-            projectId={projectId}
-          />
-        </div>
+      <div className="flex items-center justify-between gap-2 border-b border-subtle-1">
+        <Tabs
+          variant="underline"
+          value={activeTab.value}
+          onValueChange={(value) => setActiveTab(value as TActivityTab)}
+        >
+          <TabsList>
+            {ACTIVITY_TABS.map((tab) => (
+              <Tab key={tab.value} value={tab.value} label={t(tab.i18nKey)} />
+            ))}
+          </TabsList>
+        </Tabs>
+        <ActivitySortRoot sortOrder={sortOrder || E_SORT_ORDER.ASC} toggleSort={toggleSortOrder} />
       </div>
 
       {/* rendering activity */}
       <div className="space-y-3">
         <div className="min-h-[200px]">
           <div className="space-y-3">
-            {!disabled && sortOrder === E_SORT_ORDER.DESC && renderCommentCreationBox}
+            {showCommentBox && sortOrder === E_SORT_ORDER.DESC && renderCommentCreationBox}
             <IssueActivityCommentRoot
               projectId={projectId}
               workspaceSlug={workspaceSlug}
               isIntakeIssue={isIntakeIssue}
               issueId={issueId}
-              selectedFilters={selectedFilters || defaultActivityFilters}
+              selectedFilters={activeTab.filters}
               activityOperations={activityOperations}
               showAccessSpecifier={!!project.anchor}
               disabled={disabled}
               sortOrder={sortOrder || E_SORT_ORDER.ASC}
             />
-            {!disabled && sortOrder === E_SORT_ORDER.ASC && renderCommentCreationBox}
+            {showCommentBox && sortOrder === E_SORT_ORDER.ASC && renderCommentCreationBox}
           </div>
         </div>
       </div>

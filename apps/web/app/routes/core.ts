@@ -178,6 +178,22 @@ export const coreRoutes: RouteConfigEntry[] = [
             ),
           ]),
 
+          // Release Detail
+          layout("./(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/releases/(detail)/layout.tsx", [
+            route(
+              ":workspaceSlug/projects/:projectId/releases/:releaseId",
+              "./(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/releases/(detail)/[releaseId]/page.tsx"
+            ),
+          ]),
+
+          // Releases List
+          layout("./(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/releases/(list)/layout.tsx", [
+            route(
+              ":workspaceSlug/projects/:projectId/releases",
+              "./(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/releases/(list)/page.tsx"
+            ),
+          ]),
+
           // View Detail
           layout("./(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/layout.tsx", [
             route(

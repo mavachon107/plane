@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Release hinzufügen",
+    "create_release": "Release erstellen",
+    "update_release": "Release aktualisieren",
+    "delete_release": "Release löschen",
+    "delete_confirmation": "Soll das Release „{name}“ wirklich gelöscht werden? Dies kann nicht rückgängig gemacht werden.",
+    "release_now": "Jetzt veröffentlichen",
+    "scope": "Umfang",
+    "changelog": "Änderungsprotokoll",
+    "changelog_placeholder": "Beschreiben, was sich in diesem Release geändert hat …",
+    "add_work_items": "Werkelemente hinzufügen",
+    "remove_work_item": "Aus Release entfernen",
+    "work_items": "Werkelemente",
+    "target_date": "Zieldatum",
+    "lead": "Verantwortlich",
+    "label": "Label",
+    "tag": "Tag",
+    "status_label": "Status",
+    "no_lead": "Keine verantwortliche Person",
+    "no_labels": "Noch keine Labels",
+    "no_tags": "Noch keine Tags",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "Nicht veröffentlicht",
+      "released": "Veröffentlicht",
+      "cancelled": "Abgebrochen"
+    },
+    "tabs": {
+      "overview": "Übersicht",
+      "scope": "Umfang",
+      "changelog": "Änderungsprotokoll"
+    },
+    "form": {
+      "name_placeholder": "Name des Releases",
+      "name_required": "Name ist erforderlich",
+      "name_too_long": "Der Name muss weniger als 255 Zeichen enthalten",
+      "description_placeholder": "Dieses Release beschreiben"
+    },
+    "quick_actions": {
+      "label": "Release-Aktionen anzeigen"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Arbeit in Releases bündeln",
+        "description": "Werkelemente zu einer auslieferbaren Version bündeln, deren Umfang verfolgen und ein Änderungsprotokoll veröffentlichen."
+      }
+    },
+    "disabled": {
+      "title": "Releases sind für dieses Projekt nicht aktiviert",
+      "description": "Releases in den Projektfunktionen aktivieren, um Arbeit in auslieferbare Versionen zu bündeln.",
+      "primary_button": "Funktionen verwalten"
+    },
+    "not_found": {
+      "title": "Release existiert nicht",
+      "description": "Das gesuchte Release existiert nicht, wurde archiviert oder wurde gelöscht.",
+      "primary_button": "Andere Releases anzeigen"
+    },
+    "toast": {
+      "create": {
+        "success": "Release erfolgreich erstellt.",
+        "error": "Release konnte nicht erstellt werden. Bitte erneut versuchen."
+      },
+      "update": {
+        "success": "Release erfolgreich aktualisiert.",
+        "error": "Release konnte nicht aktualisiert werden. Bitte erneut versuchen."
+      },
+      "delete": {
+        "success": "Release erfolgreich gelöscht.",
+        "error": "Release konnte nicht gelöscht werden. Bitte erneut versuchen."
+      },
+      "copy": {
+        "success": "Release-Link in die Zwischenablage kopiert."
+      },
+      "released": {
+        "success": "Release als veröffentlicht markiert."
+      },
+      "changelog": {
+        "error": "Änderungsprotokoll konnte nicht gespeichert werden. Bitte erneut versuchen."
+      },
+      "add_work_items": {
+        "error": "Werkelemente konnten nicht hinzugefügt werden. Bitte erneut versuchen."
+      },
+      "remove_work_item": {
+        "error": "Werkelement konnte nicht entfernt werden. Bitte erneut versuchen."
+      }
+    }
   }
 }

@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Adicionar versão",
+    "create_release": "Criar versão",
+    "update_release": "Atualizar versão",
+    "delete_release": "Excluir versão",
+    "delete_confirmation": "Tem certeza de que deseja excluir a versão \"{name}\"? Esta ação não pode ser desfeita.",
+    "release_now": "Publicar agora",
+    "scope": "Escopo",
+    "changelog": "Registro de alterações",
+    "changelog_placeholder": "Descreva o que mudou nesta versão…",
+    "add_work_items": "Adicionar itens de trabalho",
+    "remove_work_item": "Remover da versão",
+    "work_items": "Itens de trabalho",
+    "target_date": "Data prevista",
+    "lead": "Responsável",
+    "label": "Etiqueta",
+    "tag": "Tag",
+    "status_label": "Status",
+    "no_lead": "Sem responsável",
+    "no_labels": "Ainda não há etiquetas",
+    "no_tags": "Ainda não há tags",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "Não publicada",
+      "released": "Publicada",
+      "cancelled": "Cancelada"
+    },
+    "tabs": {
+      "overview": "Visão geral",
+      "scope": "Escopo",
+      "changelog": "Registro de alterações"
+    },
+    "form": {
+      "name_placeholder": "Nome da versão",
+      "name_required": "O nome é obrigatório",
+      "name_too_long": "O nome deve ter menos de 255 caracteres",
+      "description_placeholder": "Descreva esta versão"
+    },
+    "quick_actions": {
+      "label": "Exibir ações da versão"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Agrupe o trabalho em versões",
+        "description": "Agrupe itens de trabalho em uma versão entregável, acompanhe seu escopo e publique um registro de alterações."
+      }
+    },
+    "disabled": {
+      "title": "As versões não estão habilitadas neste projeto",
+      "description": "Ative as versões nos recursos do projeto para agrupar o trabalho em versões entregáveis.",
+      "primary_button": "Gerenciar recursos"
+    },
+    "not_found": {
+      "title": "A versão não existe",
+      "description": "A versão que você procura não existe, foi arquivada ou foi excluída.",
+      "primary_button": "Ver outras versões"
+    },
+    "toast": {
+      "create": {
+        "success": "Versão criada com sucesso.",
+        "error": "Não foi possível criar a versão. Tente novamente."
+      },
+      "update": {
+        "success": "Versão atualizada com sucesso.",
+        "error": "Não foi possível atualizar a versão. Tente novamente."
+      },
+      "delete": {
+        "success": "Versão excluída com sucesso.",
+        "error": "Não foi possível excluir a versão. Tente novamente."
+      },
+      "copy": {
+        "success": "Link da versão copiado para a área de transferência."
+      },
+      "released": {
+        "success": "Versão marcada como publicada."
+      },
+      "changelog": {
+        "error": "Não foi possível salvar o registro de alterações. Tente novamente."
+      },
+      "add_work_items": {
+        "error": "Não foi possível adicionar os itens de trabalho. Tente novamente."
+      },
+      "remove_work_item": {
+        "error": "Não foi possível remover o item de trabalho. Tente novamente."
+      }
+    }
   }
 }

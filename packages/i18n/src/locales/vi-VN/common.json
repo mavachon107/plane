@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Sắp xếp theo",
       "manual": "Thủ công - Xếp hạng",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Mới tạo nhất",
       "last_updated": "Mới cập nhật nhất",
       "start_date": "Ngày bắt đầu",

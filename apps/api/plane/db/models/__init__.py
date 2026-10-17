@@ -59,6 +59,15 @@ from .project import (
     ProjectPublicMember,
     ProjectUserProperty,
 )
+from .release import (
+    Release,
+    ReleaseChangelog,
+    ReleaseLabel,
+    ReleaseLabelAssociation,
+    ReleaseStatus,
+    ReleaseTag,
+    ReleaseWorkItem,
+)
 from .session import Session
 from .social_connection import SocialLoginConnection
 from .state import State, StateGroup, DEFAULT_STATES
@@ -79,7 +88,7 @@ from .workspace import (
 
 from .favorite import UserFavorite
 
-from .issue_type import IssueType
+from .issue_type import IssueType, ProjectIssueType
 
 from .recent_visit import UserRecentVisit
 

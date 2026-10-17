@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "გამოშვების დამატება",
+    "create_release": "გამოშვების შექმნა",
+    "update_release": "გამოშვების განახლება",
+    "delete_release": "გამოშვების წაშლა",
+    "delete_confirmation": "ნამდვილად გსურთ გამოშვების „{name}“ წაშლა? ამ მოქმედების გაუქმება შეუძლებელია.",
+    "release_now": "ახლავე გამოქვეყნება",
+    "scope": "მოცულობა",
+    "changelog": "ცვლილებების ჟურნალი",
+    "changelog_placeholder": "აღწერეთ, რა შეიცვალა ამ გამოშვებაში…",
+    "add_work_items": "სამუშაო ერთეულების დამატება",
+    "remove_work_item": "გამოშვებიდან ამოღება",
+    "work_items": "სამუშაო ერთეულები",
+    "target_date": "სამიზნე თარიღი",
+    "lead": "პასუხისმგებელი",
+    "label": "იარლიყი",
+    "tag": "ტეგი",
+    "status_label": "სტატუსი",
+    "no_lead": "პასუხისმგებელი არ არის",
+    "no_labels": "იარლიყები ჯერ არ არის",
+    "no_tags": "ტეგები ჯერ არ არის",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "გამოუქვეყნებელი",
+      "released": "გამოქვეყნებული",
+      "cancelled": "გაუქმებული"
+    },
+    "tabs": {
+      "overview": "მიმოხილვა",
+      "scope": "მოცულობა",
+      "changelog": "ცვლილებების ჟურნალი"
+    },
+    "form": {
+      "name_placeholder": "გამოშვების სახელი",
+      "name_required": "სახელი სავალდებულოა",
+      "name_too_long": "სახელი უნდა იყოს 255 სიმბოლოზე ნაკლები",
+      "description_placeholder": "აღწერეთ ეს გამოშვება"
+    },
+    "quick_actions": {
+      "label": "გამოშვების მოქმედებების ჩვენება"
+    },
+    "empty_state": {
+      "general": {
+        "title": "დააჯგუფეთ სამუშაო გამოშვებებად",
+        "description": "დააჯგუფეთ სამუშაო ერთეულები მიწოდებად ვერსიად, თვალი ადევნეთ მის მოცულობას და გამოაქვეყნეთ ცვლილებების ჟურნალი."
+      }
+    },
+    "disabled": {
+      "title": "ამ პროექტისთვის გამოშვებები ჩართული არ არის",
+      "description": "ჩართეთ გამოშვებები პროექტის ფუნქციებში, რათა დააჯგუფოთ სამუშაო მიწოდებად ვერსიებად.",
+      "primary_button": "ფუნქციების მართვა"
+    },
+    "not_found": {
+      "title": "გამოშვება არ არსებობს",
+      "description": "გამოშვება, რომელსაც ეძებთ, არ არსებობს, დაარქივდა ან წაიშალა.",
+      "primary_button": "სხვა გამოშვებების ნახვა"
+    },
+    "toast": {
+      "create": {
+        "success": "გამოშვება წარმატებით შეიქმნა.",
+        "error": "გამოშვების შექმნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+      },
+      "update": {
+        "success": "გამოშვება წარმატებით განახლდა.",
+        "error": "გამოშვების განახლება ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+      },
+      "delete": {
+        "success": "გამოშვება წარმატებით წაიშალა.",
+        "error": "გამოშვების წაშლა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+      },
+      "copy": {
+        "success": "გამოშვების ბმული დაკოპირდა ბუფერში."
+      },
+      "released": {
+        "success": "გამოშვება მონიშნულია როგორც გამოქვეყნებული."
+      },
+      "changelog": {
+        "error": "ცვლილებების ჟურნალის შენახვა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+      },
+      "add_work_items": {
+        "error": "სამუშაო ერთეულების დამატება ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+      },
+      "remove_work_item": {
+        "error": "სამუშაო ერთეულის ამოღება ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+      }
+    }
   }
 }

@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Sürüm ekle",
+    "create_release": "Sürüm oluştur",
+    "update_release": "Sürümü güncelle",
+    "delete_release": "Sürümü sil",
+    "delete_confirmation": "\"{name}\" sürümünü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "release_now": "Şimdi yayınla",
+    "scope": "Kapsam",
+    "changelog": "Değişiklik günlüğü",
+    "changelog_placeholder": "Bu sürümde nelerin değiştiğini açıklayın…",
+    "add_work_items": "İş öğeleri ekle",
+    "remove_work_item": "Sürümden kaldır",
+    "work_items": "İş öğeleri",
+    "target_date": "Hedef tarih",
+    "lead": "Sorumlu",
+    "label": "Etiket",
+    "tag": "Tag",
+    "status_label": "Durum",
+    "no_lead": "Sorumlu yok",
+    "no_labels": "Henüz etiket yok",
+    "no_tags": "Henüz tag yok",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "Yayınlanmadı",
+      "released": "Yayınlandı",
+      "cancelled": "İptal edildi"
+    },
+    "tabs": {
+      "overview": "Genel bakış",
+      "scope": "Kapsam",
+      "changelog": "Değişiklik günlüğü"
+    },
+    "form": {
+      "name_placeholder": "Sürüm adı",
+      "name_required": "Ad gereklidir",
+      "name_too_long": "Ad 255 karakterden kısa olmalıdır",
+      "description_placeholder": "Bu sürümü açıklayın"
+    },
+    "quick_actions": {
+      "label": "Sürüm eylemlerini göster"
+    },
+    "empty_state": {
+      "general": {
+        "title": "İşleri sürümler hâlinde gruplayın",
+        "description": "İş öğelerini teslim edilebilir bir sürümde gruplayın, kapsamını izleyin ve bir değişiklik günlüğü yayınlayın."
+      }
+    },
+    "disabled": {
+      "title": "Bu projede sürümler etkin değil",
+      "description": "İşleri teslim edilebilir sürümler hâlinde gruplamak için proje özelliklerinden sürümleri etkinleştirin.",
+      "primary_button": "Özellikleri yönet"
+    },
+    "not_found": {
+      "title": "Sürüm mevcut değil",
+      "description": "Aradığınız sürüm mevcut değil, arşivlenmiş veya silinmiş.",
+      "primary_button": "Diğer sürümleri görüntüle"
+    },
+    "toast": {
+      "create": {
+        "success": "Sürüm başarıyla oluşturuldu.",
+        "error": "Sürüm oluşturulamadı. Lütfen tekrar deneyin."
+      },
+      "update": {
+        "success": "Sürüm başarıyla güncellendi.",
+        "error": "Sürüm güncellenemedi. Lütfen tekrar deneyin."
+      },
+      "delete": {
+        "success": "Sürüm başarıyla silindi.",
+        "error": "Sürüm silinemedi. Lütfen tekrar deneyin."
+      },
+      "copy": {
+        "success": "Sürüm bağlantısı panoya kopyalandı."
+      },
+      "released": {
+        "success": "Sürüm yayınlandı olarak işaretlendi."
+      },
+      "changelog": {
+        "error": "Değişiklik günlüğü kaydedilemedi. Lütfen tekrar deneyin."
+      },
+      "add_work_items": {
+        "error": "İş öğeleri eklenemedi. Lütfen tekrar deneyin."
+      },
+      "remove_work_item": {
+        "error": "İş öğesi kaldırılamadı. Lütfen tekrar deneyin."
+      }
+    }
   }
 }

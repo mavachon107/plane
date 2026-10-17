@@ -18,10 +18,12 @@ type Props = {
   appliedFilters: string[] | null;
   handleUpdate: (val: string | string[]) => void;
   searchQuery: string;
+  /** Heading shown for the filter. */
+  title?: string;
 };
 
 export const FilterTargetDate = observer(function FilterTargetDate(props: Props) {
-  const { appliedFilters, handleUpdate, searchQuery } = props;
+  const { appliedFilters, handleUpdate, searchQuery, title = "Due date" } = props;
 
   const [previewEnabled, setPreviewEnabled] = useState(true);
   const [isDateFilterModalOpen, setIsDateFilterModalOpen] = useState(false);
@@ -34,7 +36,7 @@ export const FilterTargetDate = observer(function FilterTargetDate(props: Props)
 
   const isCustomDateSelected = () => {
     const isValidDateSelected = appliedFilters?.filter((f) => isInDateFormat(f.split(";")[0])) || [];
-    return isValidDateSelected.length > 0 ? true : false;
+    return isValidDateSelected.length > 0;
   };
   const handleCustomDate = () => {
     if (isCustomDateSelected()) {
@@ -50,11 +52,11 @@ export const FilterTargetDate = observer(function FilterTargetDate(props: Props)
           handleClose={() => setIsDateFilterModalOpen(false)}
           isOpen={isDateFilterModalOpen}
           onSelect={(val) => handleUpdate(val)}
-          title="Due date"
+          title={title}
         />
       )}
       <FilterHeader
-        title={`Due date${appliedFiltersCount > 0 ? ` (${appliedFiltersCount})` : ""}`}
+        title={`${title}${appliedFiltersCount > 0 ? ` (${appliedFiltersCount})` : ""}`}
         isPreviewEnabled={previewEnabled}
         handleIsPreviewEnabled={() => setPreviewEnabled(!previewEnabled)}
       />
@@ -65,7 +67,7 @@ export const FilterTargetDate = observer(function FilterTargetDate(props: Props)
               {filteredOptions.map((option) => (
                 <FilterOption
                   key={option.value}
-                  isChecked={appliedFilters?.includes(option.value) ? true : false}
+                  isChecked={appliedFilters?.includes(option.value) ?? false}
                   onClick={() => handleUpdate(option.value)}
                   title={option.name}
                   multiple

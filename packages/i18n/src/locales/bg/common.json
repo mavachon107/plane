@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Подреждане по",
       "manual": "Ръчно",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Последно създадени",
       "last_updated": "Последно обновени",
       "start_date": "Начална дата",

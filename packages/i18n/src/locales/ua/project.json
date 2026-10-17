@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Додати реліз",
+    "create_release": "Створити реліз",
+    "update_release": "Змінити реліз",
+    "delete_release": "Видалити реліз",
+    "delete_confirmation": "Ви справді хочете видалити реліз «{name}»? Цю дію не можна скасувати.",
+    "release_now": "Випустити зараз",
+    "scope": "Обсяг",
+    "changelog": "Список змін",
+    "changelog_placeholder": "Опишіть, що змінилося в цьому релізі…",
+    "add_work_items": "Додати робочі елементи",
+    "remove_work_item": "Прибрати з релізу",
+    "work_items": "Робочі елементи",
+    "target_date": "Цільова дата",
+    "lead": "Відповідальний",
+    "label": "Мітка",
+    "tag": "Тег",
+    "status_label": "Статус",
+    "no_lead": "Відповідального не призначено",
+    "no_labels": "Міток поки немає",
+    "no_tags": "Тегів поки немає",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "Не випущено",
+      "released": "Випущено",
+      "cancelled": "Скасовано"
+    },
+    "tabs": {
+      "overview": "Огляд",
+      "scope": "Обсяг",
+      "changelog": "Список змін"
+    },
+    "form": {
+      "name_placeholder": "Назва релізу",
+      "name_required": "Назва обов’язкова",
+      "name_too_long": "Назва має бути коротшою за 255 символів",
+      "description_placeholder": "Опишіть цей реліз"
+    },
+    "quick_actions": {
+      "label": "Показати дії релізу"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Групуйте роботу в релізи",
+        "description": "Об’єднуйте робочі елементи в готовий до випуску реліз, стежте за його обсягом і публікуйте список змін."
+      }
+    },
+    "disabled": {
+      "title": "Релізи не увімкнено для цього проєкту",
+      "description": "Увімкніть релізи у функціях проєкту, щоб об’єднувати роботу в готові до випуску версії.",
+      "primary_button": "Керування функціями"
+    },
+    "not_found": {
+      "title": "Реліз не існує",
+      "description": "Шуканий реліз не існує, був заархівований або видалений.",
+      "primary_button": "Переглянути інші релізи"
+    },
+    "toast": {
+      "create": {
+        "success": "Реліз успішно створено.",
+        "error": "Не вдалося створити реліз. Будь ласка, спробуйте ще раз."
+      },
+      "update": {
+        "success": "Реліз успішно оновлено.",
+        "error": "Не вдалося оновити реліз. Будь ласка, спробуйте ще раз."
+      },
+      "delete": {
+        "success": "Реліз успішно видалено.",
+        "error": "Не вдалося видалити реліз. Будь ласка, спробуйте ще раз."
+      },
+      "copy": {
+        "success": "Посилання на реліз скопійовано до буфера обміну."
+      },
+      "released": {
+        "success": "Реліз позначено як випущений."
+      },
+      "changelog": {
+        "error": "Не вдалося зберегти список змін. Будь ласка, спробуйте ще раз."
+      },
+      "add_work_items": {
+        "error": "Не вдалося додати робочі елементи. Будь ласка, спробуйте ще раз."
+      },
+      "remove_work_item": {
+        "error": "Не вдалося прибрати робочий елемент. Будь ласка, спробуйте ще раз."
+      }
+    }
   }
 }

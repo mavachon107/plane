@@ -59,6 +59,7 @@ from plane.db.models import (
     ModuleIssue,
     Project,
     ProjectMember,
+    ReleaseWorkItem,
     UserRecentVisit,
 )
 from plane.utils.filters import ComplexFilterBackend, IssueFilterSet
@@ -562,6 +563,15 @@ class IssueViewSet(BaseViewSet):
                     ),
                     Value([], output_field=ArrayField(UUIDField())),
                 ),
+                release_ids=Coalesce(
+                    Subquery(
+                        ReleaseWorkItem.objects.filter(issue_id=OuterRef("pk"))
+                        .values("issue_id")
+                        .annotate(arr=ArrayAgg("release_id", distinct=True))
+                        .values("arr")
+                    ),
+                    Value([], output_field=ArrayField(UUIDField())),
+                ),
             )
             .prefetch_related(
                 Prefetch(
@@ -662,6 +672,16 @@ class IssueViewSet(BaseViewSet):
                             ~Q(issue_module__module_id__isnull=True)
                             & Q(issue_module__module__archived_at__isnull=True)
                             & Q(issue_module__deleted_at__isnull=True)
+                        ),
+                    ),
+                    Value([], output_field=ArrayField(UUIDField())),
+                ),
+                release_ids=Coalesce(
+                    ArrayAgg(
+                        "issue_release__release_id",
+                        distinct=True,
+                        filter=Q(
+                            ~Q(issue_release__release_id__isnull=True) & Q(issue_release__deleted_at__isnull=True)
                         ),
                     ),
                     Value([], output_field=ArrayField(UUIDField())),
@@ -1287,6 +1307,16 @@ class IssueDetailIdentifierEndpoint(BaseAPIView):
                             ~Q(issue_module__module_id__isnull=True)
                             & Q(issue_module__module__archived_at__isnull=True)
                             & Q(issue_module__deleted_at__isnull=True)
+                        ),
+                    ),
+                    Value([], output_field=ArrayField(UUIDField())),
+                ),
+                release_ids=Coalesce(
+                    ArrayAgg(
+                        "issue_release__release_id",
+                        distinct=True,
+                        filter=Q(
+                            ~Q(issue_release__release_id__isnull=True) & Q(issue_release__deleted_at__isnull=True)
                         ),
                     ),
                     Value([], output_field=ArrayField(UUIDField())),

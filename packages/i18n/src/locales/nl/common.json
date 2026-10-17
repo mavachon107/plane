@@ -517,6 +517,9 @@
     "order_by": {
       "label": "Ordenen op",
       "manual": "Handmatig",
+      "name": "Name",
+      "progress": "Progress",
+      "target_date": "Target date",
       "last_created": "Laatst aangemaakt",
       "last_updated": "Laatst bijgewerkt",
       "start_date": "Startdatum",

@@ -414,5 +414,108 @@
         }
       }
     }
+  },
+  "project_releases": {
+    "add_release": "Add release",
+    "create_release": "Create release",
+    "update_release": "Update release",
+    "delete_release": "Delete release",
+    "delete_confirmation": "Are you sure you want to delete release “{name}”? This cannot be undone.",
+    "release_now": "Release now",
+    "scope": "Scope",
+    "changelog": "Changelog",
+    "changelog_placeholder": "Write what changed in this release…",
+    "add_work_items": "Add work items",
+    "remove_work_item": "Remove from release",
+    "work_items": "Work items",
+    "target_date": "Target date",
+    "lead": "Lead",
+    "label": "Label",
+    "tag": "Tag",
+    "status_label": "Status",
+    "no_lead": "No lead",
+    "no_labels": "No labels yet",
+    "no_tags": "No tags yet",
+    "no_release": "No release",
+    "no_releases": "No releases yet",
+    "overview": {
+      "properties": "Properties",
+      "created_by_on": "{name} on {date}",
+      "click_to_add_description": "Click to add description",
+      "progress": "Progress",
+      "completed_work_items": "Completed work items",
+      "pending_work_items": "Pending work items",
+      "cancelled_work_items": "Cancelled work items",
+      "toggle_activity": "Toggle activity panel"
+    },
+    "activity": {
+      "created": "created the release.",
+      "added_work_item_prefix": "added work item",
+      "added_work_item_suffix": "to the release."
+    },
+    "status": {
+      "unreleased": "Unreleased",
+      "released": "Released",
+      "cancelled": "Cancelled"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "scope": "Scope",
+      "changelog": "Changelog"
+    },
+    "form": {
+      "name_placeholder": "Release name",
+      "name_required": "Name is required",
+      "name_too_long": "Name should be less than 255 characters",
+      "description_placeholder": "Describe this release"
+    },
+    "quick_actions": {
+      "label": "Toggle release actions menu"
+    },
+    "empty_state": {
+      "general": {
+        "title": "Group work into releases",
+        "description": "Bundle work items into a shippable version, track its scope, and publish a changelog."
+      }
+    },
+    "disabled": {
+      "title": "Releases are not enabled for this project",
+      "description": "Turn Releases on in project features to bundle work into shippable versions.",
+      "primary_button": "Manage features"
+    },
+    "not_found": {
+      "title": "Release does not exist",
+      "description": "The release you are looking for does not exist, has been archived, or has been deleted.",
+      "primary_button": "View other releases"
+    },
+    "toast": {
+      "create": {
+        "success": "Release created successfully.",
+        "error": "Release could not be created. Please try again."
+      },
+      "update": {
+        "success": "Release updated successfully.",
+        "error": "Release could not be updated. Please try again."
+      },
+      "delete": {
+        "success": "Release deleted successfully.",
+        "error": "Release could not be deleted. Please try again."
+      },
+      "copy": {
+        "success": "Release link copied to clipboard."
+      },
+      "released": {
+        "success": "Release marked as released."
+      },
+      "changelog": {
+        "error": "Changelog could not be saved. Please try again."
+      },
+      "add_work_items": {
+        "error": "Work items could not be added. Please try again."
+      },
+      "remove_work_item": {
+        "error": "Work item could not be removed. Please try again."
+      }
+    }
   }
 }

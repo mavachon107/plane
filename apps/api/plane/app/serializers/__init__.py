@@ -45,6 +45,16 @@ from .project import (
     ProjectMemberRoleSerializer,
     ProjectMemberPreferenceSerializer,
 )
+from .release import (
+    ReleaseSerializer,
+    ReleaseWriteSerializer,
+    ReleaseChangelogSerializer,
+    ReleaseLabelSerializer,
+    ReleaseLabelLiteSerializer,
+    ReleaseTagSerializer,
+    ReleaseTagLiteSerializer,
+    ReleaseWorkItemSerializer,
+)
 from .state import StateSerializer, StateLiteSerializer
 from .view import IssueViewSerializer, ViewIssueListSerializer
 from .cycle import (
