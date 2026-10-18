@@ -138,3 +138,12 @@ Each step is independently committable; steps 1 to 4 deliver a working backend b
 - Manual link (`POST .../git-references/`) records the URL with `metadata.manual` and cannot fetch PR title/state (no GitHub API token).
 - References are served by `GET .../issues/<id>/git-references/` rather than embedded in the issue detail serializer.
 - Bot user: `git_integration_bot` with `bot_type=GIT_INTEGRATION`, created lazily.
+
+## Implementation notes (frontend, steps 5-6)
+
+- No MobX store: reference and repository data are fetched with SWR through `apps/web/services/git-integration.service.ts` (the plan's store/hook layer was dropped as unnecessary for read-mostly data).
+- "Development" section is `IssueGitReferences`, rendered inside `IssueDetailWidgets`, so it appears in both the full page and the peek view. It renders nothing when a work item has no references. `preview` has no Details/Project structure sections (those live on `develop`), so it is not placed inside them.
+- Project settings page lives at `/settings/projects/:projectId/github` (Execution group, admin only).
+- "Copy branch name" button sits next to "Copy link" in the work item header.
+- i18n: `git_integration.*` and `project_settings.github.label` in `project-settings.json`, all 22 locales (sync check passes). Translations are AI-drafted and need native review per the `translate` skill.
+- Not done: manual "link PR" UI (API exists), per-event state mapping UI (`state_mapping` is API-only), browser verification.

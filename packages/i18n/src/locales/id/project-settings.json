@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Pengembangan",
+    "state": {
+      "open": "Terbuka",
+      "draft": "Draf",
+      "merged": "Digabungkan",
+      "closed": "Ditutup",
+      "active": "Aktif",
+      "deleted": "Dihapus"
+    },
+    "description": "Hubungkan satu repositori GitHub ke proyek ini. Branch dan pull request yang menyebut kunci item kerja (misalnya PROJ-123) ditautkan ke item kerja tersebut, dan statusnya mengikuti kemajuan keduanya.",
+    "owner": "Pemilik",
+    "repository": "Repositori",
+    "connect": "Hubungkan repositori",
+    "disconnect": "Putuskan",
+    "connect_error": "Repositori tidak dapat dihubungkan. Silakan coba lagi.",
+    "close_on_merge": "Selesaikan item kerja saat pull request digabungkan",
+    "close_on_merge_description": "Jika tidak, hanya pull request dengan kata kunci penutup, seperti \"Closes PROJ-123\", yang menyelesaikan item kerja.",
+    "webhook_setup": "Pengaturan webhook",
+    "payload_url": "URL payload",
+    "secret": "Rahasia",
+    "secret_warning": "Salin rahasia ini sekarang. Rahasia tidak akan ditampilkan lagi.",
+    "secret_hidden": "Rahasia hanya ditampilkan sekali saat repositori dihubungkan. Putuskan lalu hubungkan kembali untuk membuat yang baru.",
+    "step_1": "Di GitHub, buka Settings repositori, lalu Webhooks, lalu Add webhook.",
+    "step_2": "Tempel URL payload dan rahasia, lalu atur tipe konten ke application/json.",
+    "step_3": "Pilih peristiwa individual: Branch or tag creation, Branch or tag deletion, Pushes, dan Pull requests.",
+    "copy": "Salin",
+    "copy_branch_name": "Salin nama branch",
+    "branch_name_copied": "Nama branch disalin"
   }
 }

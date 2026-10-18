@@ -5,6 +5,7 @@
  */
 
 import type { LucideIcon } from "lucide-react";
+import { GitBranch } from "lucide-react";
 import {
   CyclesOutline,
   EstimateOutline,
@@ -35,4 +36,5 @@ export const PROJECT_SETTINGS_ICONS: Record<TProjectSettingsTabs, LucideIcon | R
   labels: LabelsOutline,
   estimates: EstimateOutline,
   automations: TriggerOutline,
+  github: GitBranch,
 };

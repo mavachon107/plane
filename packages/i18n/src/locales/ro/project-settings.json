@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Dezvoltare",
+    "state": {
+      "open": "Deschis",
+      "draft": "Ciornă",
+      "merged": "Îmbinat",
+      "closed": "Închis",
+      "active": "Activă",
+      "deleted": "Ștearsă"
+    },
+    "description": "Conectați un depozit GitHub la acest proiect. Ramurile și pull request-urile care menționează cheia unui element de lucru (de exemplu PROJ-123) sunt asociate cu acel element, iar starea lui urmează progresul acestora.",
+    "owner": "Proprietar",
+    "repository": "Depozit",
+    "connect": "Conectează depozitul",
+    "disconnect": "Deconectează",
+    "connect_error": "Depozitul nu a putut fi conectat. Încercați din nou.",
+    "close_on_merge": "Finalizează elementele de lucru când un pull request este îmbinat",
+    "close_on_merge_description": "Altfel, doar pull request-urile cu un cuvânt-cheie de închidere, precum \"Closes PROJ-123\", finalizează elementul de lucru.",
+    "webhook_setup": "Configurare webhook",
+    "payload_url": "URL-ul payload-ului",
+    "secret": "Secret",
+    "secret_warning": "Copiați acest secret acum. Nu va mai fi afișat.",
+    "secret_hidden": "Secretul a fost afișat o singură dată, la conectarea depozitului. Deconectați și reconectați pentru a genera unul nou.",
+    "step_1": "În GitHub, deschideți Settings al depozitului, apoi Webhooks, apoi Add webhook.",
+    "step_2": "Lipiți URL-ul payload-ului și secretul și setați tipul de conținut la application/json.",
+    "step_3": "Alegeți evenimente individuale: Branch or tag creation, Branch or tag deletion, Pushes și Pull requests.",
+    "copy": "Copiază",
+    "copy_branch_name": "Copiază numele ramurii",
+    "branch_name_copied": "Numele ramurii a fost copiat"
   }
 }

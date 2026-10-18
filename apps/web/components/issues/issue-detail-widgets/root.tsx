@@ -7,6 +7,8 @@
 import React from "react";
 // plane imports
 import type { TIssueServiceType, TWorkItemWidgets } from "@plane/types";
+// components
+import { IssueGitReferences } from "@/components/git-integration";
 // local imports
 import { IssueDetailWidgetActionButtons } from "./action-buttons";
 import { IssueDetailWidgetCollapsibles } from "./issue-detail-widget-collapsibles";
@@ -52,6 +54,7 @@ export function IssueDetailWidgets(props: Props) {
           issueServiceType={issueServiceType}
           hideWidgets={hideWidgets}
         />
+        <IssueGitReferences workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} />
       </div>
       {renderWidgetModals && (
         <IssueDetailWidgetModals

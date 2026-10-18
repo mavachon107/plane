@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Vývoj",
+    "state": {
+      "open": "Otvorený",
+      "draft": "Koncept",
+      "merged": "Zlúčený",
+      "closed": "Uzavretý",
+      "active": "Aktívna",
+      "deleted": "Odstránená"
+    },
+    "description": "Pripojte k tomuto projektu jeden repozitár GitHub. Vetvy a pull requesty, ktoré spomínajú kľúč pracovnej položky (napríklad PROJ-123), sa prepoja s touto položkou a jej stav sleduje ich pokrok.",
+    "owner": "Vlastník",
+    "repository": "Repozitár",
+    "connect": "Pripojiť repozitár",
+    "disconnect": "Odpojiť",
+    "connect_error": "Repozitár sa nepodarilo pripojiť. Skúste to prosím znova.",
+    "close_on_merge": "Dokončiť pracovné položky po zlúčení pull requestu",
+    "close_on_merge_description": "Inak pracovnú položku dokončia iba pull requesty s uzatváracím kľúčovým slovom, napríklad \"Closes PROJ-123\".",
+    "webhook_setup": "Nastavenie webhooku",
+    "payload_url": "URL dátovej časti",
+    "secret": "Tajný kľúč",
+    "secret_warning": "Skopírujte si tento tajný kľúč teraz. Znova sa nezobrazí.",
+    "secret_hidden": "Tajný kľúč sa zobrazil iba raz pri pripojení repozitára. Na vygenerovanie nového repozitár odpojte a znova pripojte.",
+    "step_1": "V GitHube otvorte Settings repozitára, potom Webhooks a potom Add webhook.",
+    "step_2": "Vložte URL dátovej časti a tajný kľúč a nastavte typ obsahu na application/json.",
+    "step_3": "Vyberte jednotlivé udalosti: Branch or tag creation, Branch or tag deletion, Pushes a Pull requests.",
+    "copy": "Kopírovať",
+    "copy_branch_name": "Kopírovať názov vetvy",
+    "branch_name_copied": "Názov vetvy skopírovaný"
   }
 }

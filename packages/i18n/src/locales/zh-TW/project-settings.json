@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "開發",
+    "state": {
+      "open": "開啟",
+      "draft": "草稿",
+      "merged": "已合併",
+      "closed": "已關閉",
+      "active": "啟用中",
+      "deleted": "已刪除"
+    },
+    "description": "將一個 GitHub 儲存庫連接到此專案。提及工作項目鍵（例如 PROJ-123）的分支和拉取請求會連結到該工作項目，其狀態會隨它們的進度而變化。",
+    "owner": "擁有者",
+    "repository": "儲存庫",
+    "connect": "連接儲存庫",
+    "disconnect": "中斷連接",
+    "connect_error": "無法連接儲存庫。請再試一次。",
+    "close_on_merge": "合併拉取請求時完成工作項目",
+    "close_on_merge_description": "關閉後，只有包含關閉關鍵字（如 \"Closes PROJ-123\"）的拉取請求才會完成工作項目。",
+    "webhook_setup": "Webhook 設定",
+    "payload_url": "Payload URL",
+    "secret": "密鑰",
+    "secret_warning": "請立即複製此密鑰，之後將不再顯示。",
+    "secret_hidden": "密鑰僅在連接儲存庫時顯示一次。如需產生新密鑰，請中斷連接後重新連接。",
+    "step_1": "在 GitHub 中依序開啟儲存庫的 Settings、Webhooks、Add webhook。",
+    "step_2": "貼上 Payload URL 和密鑰，並將內容類型設定為 application/json。",
+    "step_3": "選擇個別事件：Branch or tag creation、Branch or tag deletion、Pushes 和 Pull requests。",
+    "copy": "複製",
+    "copy_branch_name": "複製分支名稱",
+    "branch_name_copied": "分支名稱已複製"
   }
 }

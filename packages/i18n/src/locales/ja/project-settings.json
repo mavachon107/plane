@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "開発",
+    "state": {
+      "open": "オープン",
+      "draft": "ドラフト",
+      "merged": "マージ済み",
+      "closed": "クローズ",
+      "active": "アクティブ",
+      "deleted": "削除済み"
+    },
+    "description": "このプロジェクトに GitHub リポジトリを 1 つ接続します。作業項目キー（例: PROJ-123）を含むブランチとプルリクエストはその作業項目にリンクされ、作業項目の状態はそれらの進行に従います。",
+    "owner": "オーナー",
+    "repository": "リポジトリ",
+    "connect": "リポジトリを接続",
+    "disconnect": "接続を解除",
+    "connect_error": "リポジトリを接続できませんでした。もう一度お試しください。",
+    "close_on_merge": "プルリクエストがマージされたら作業項目を完了にする",
+    "close_on_merge_description": "オフの場合は、「Closes PROJ-123」のようなクローズキーワードを含むプルリクエストだけが作業項目を完了にします。",
+    "webhook_setup": "Webhook の設定",
+    "payload_url": "ペイロード URL",
+    "secret": "シークレット",
+    "secret_warning": "このシークレットを今すぐコピーしてください。再表示されません。",
+    "secret_hidden": "シークレットはリポジトリの接続時に一度だけ表示されました。新しく生成するには、接続を解除して再接続してください。",
+    "step_1": "GitHub でリポジトリの Settings、Webhooks、Add webhook の順に開きます。",
+    "step_2": "ペイロード URL とシークレットを貼り付け、コンテンツタイプを application/json に設定します。",
+    "step_3": "個別のイベントを選択します: Branch or tag creation、Branch or tag deletion、Pushes、Pull requests。",
+    "copy": "コピー",
+    "copy_branch_name": "ブランチ名をコピー",
+    "branch_name_copied": "ブランチ名をコピーしました"
   }
 }

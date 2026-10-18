@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Desarrollo",
+    "state": {
+      "open": "Abierta",
+      "draft": "Borrador",
+      "merged": "Fusionada",
+      "closed": "Cerrada",
+      "active": "Activa",
+      "deleted": "Eliminada"
+    },
+    "description": "Conecta un repositorio de GitHub a este proyecto. Las ramas y pull requests que mencionen la clave de un elemento de trabajo (por ejemplo PROJ-123) se vinculan a ese elemento, y su estado sigue su progreso.",
+    "owner": "Propietario",
+    "repository": "Repositorio",
+    "connect": "Conectar repositorio",
+    "disconnect": "Desconectar",
+    "connect_error": "No se pudo conectar el repositorio. Inténtalo de nuevo.",
+    "close_on_merge": "Completar elementos de trabajo cuando se fusiona una pull request",
+    "close_on_merge_description": "De lo contrario, solo las pull requests con una palabra clave de cierre, como \"Closes PROJ-123\", completan el elemento de trabajo.",
+    "webhook_setup": "Configuración del webhook",
+    "payload_url": "URL de carga útil",
+    "secret": "Secreto",
+    "secret_warning": "Copia este secreto ahora. No se volverá a mostrar.",
+    "secret_hidden": "El secreto se mostró una sola vez al conectar el repositorio. Desconecta y vuelve a conectar para generar uno nuevo.",
+    "step_1": "En GitHub, abre Settings del repositorio, luego Webhooks y después Add webhook.",
+    "step_2": "Pega la URL de carga útil y el secreto, y establece el tipo de contenido en application/json.",
+    "step_3": "Elige eventos individuales: Branch or tag creation, Branch or tag deletion, Pushes y Pull requests.",
+    "copy": "Copiar",
+    "copy_branch_name": "Copiar nombre de la rama",
+    "branch_name_copied": "Nombre de la rama copiado"
   }
 }

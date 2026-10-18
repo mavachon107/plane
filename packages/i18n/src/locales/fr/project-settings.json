@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Développement",
+    "state": {
+      "open": "Ouverte",
+      "draft": "Brouillon",
+      "merged": "Fusionnée",
+      "closed": "Fermée",
+      "active": "Active",
+      "deleted": "Supprimée"
+    },
+    "description": "Connectez un dépôt GitHub à ce projet. Les branches et pull requests qui mentionnent la clé d'un élément de travail (par exemple PROJ-123) sont liées à cet élément, dont l'état suit leur avancement.",
+    "owner": "Propriétaire",
+    "repository": "Dépôt",
+    "connect": "Connecter le dépôt",
+    "disconnect": "Déconnecter",
+    "connect_error": "Impossible de connecter le dépôt. Veuillez réessayer.",
+    "close_on_merge": "Terminer les éléments de travail lorsqu'une pull request est fusionnée",
+    "close_on_merge_description": "Sinon, seules les pull requests contenant un mot-clé de fermeture, comme « Closes PROJ-123 », terminent l'élément de travail.",
+    "webhook_setup": "Configuration du webhook",
+    "payload_url": "URL de la charge utile",
+    "secret": "Secret",
+    "secret_warning": "Copiez ce secret maintenant. Il ne sera plus affiché.",
+    "secret_hidden": "Le secret n'a été affiché qu'une fois, lors de la connexion du dépôt. Déconnectez puis reconnectez le dépôt pour en générer un nouveau.",
+    "step_1": "Dans GitHub, ouvrez Settings du dépôt, puis Webhooks, puis Add webhook.",
+    "step_2": "Collez l'URL de la charge utile et le secret, et définissez le type de contenu sur application/json.",
+    "step_3": "Choisissez les événements individuels : Branch or tag creation, Branch or tag deletion, Pushes et Pull requests.",
+    "copy": "Copier",
+    "copy_branch_name": "Copier le nom de la branche",
+    "branch_name_copied": "Nom de la branche copié"
   }
 }

@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Ontwikkeling",
+    "state": {
+      "open": "Open",
+      "draft": "Concept",
+      "merged": "Samengevoegd",
+      "closed": "Gesloten",
+      "active": "Actief",
+      "deleted": "Verwijderd"
+    },
+    "description": "Koppel één GitHub-repository aan dit project. Branches en pull requests die een werkitemsleutel noemen (bijvoorbeeld PROJ-123) worden aan dat werkitem gekoppeld, en de status ervan volgt hun voortgang.",
+    "owner": "Eigenaar",
+    "repository": "Repository",
+    "connect": "Repository koppelen",
+    "disconnect": "Ontkoppelen",
+    "connect_error": "De repository kon niet worden gekoppeld. Probeer het opnieuw.",
+    "close_on_merge": "Werkitems voltooien wanneer een pull request wordt samengevoegd",
+    "close_on_merge_description": "Anders voltooien alleen pull requests met een sluitingstrefwoord, zoals \"Closes PROJ-123\", het werkitem.",
+    "webhook_setup": "Webhook instellen",
+    "payload_url": "Payload-URL",
+    "secret": "Geheim",
+    "secret_warning": "Kopieer dit geheim nu. Het wordt niet opnieuw getoond.",
+    "secret_hidden": "Het geheim is eenmalig getoond bij het koppelen van de repository. Ontkoppel en koppel opnieuw om een nieuw geheim te genereren.",
+    "step_1": "Open in GitHub de Settings van de repository, dan Webhooks en dan Add webhook.",
+    "step_2": "Plak de payload-URL en het geheim en stel het contenttype in op application/json.",
+    "step_3": "Kies afzonderlijke gebeurtenissen: Branch or tag creation, Branch or tag deletion, Pushes en Pull requests.",
+    "copy": "Kopiëren",
+    "copy_branch_name": "Branchnaam kopiëren",
+    "branch_name_copied": "Branchnaam gekopieerd"
   }
 }
