@@ -49,9 +49,7 @@ export const IssueGitReferences = observer(function IssueGitReferences(props: Pr
       trigger={
         <span className="inline-flex items-center gap-2 text-13 font-medium text-primary">
           {t("git_integration.development")}
-          <span className="flex items-center justify-center">
-            <p className="text-14 leading-3! text-tertiary">{visible.length}</p>
-          </span>
+          <span className="text-body-xs-regular text-tertiary">{visible.length}</span>
         </span>
       }
     >
@@ -72,17 +70,19 @@ export const IssueGitReferences = observer(function IssueGitReferences(props: Pr
                     href={reference.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex min-w-0 items-center gap-1 text-13 text-primary hover:underline"
+                    className="flex min-w-0 items-center gap-1 text-body-xs-regular text-primary hover:underline"
                   >
                     <span className="truncate">{label}</span>
                     <ExternalLink className="size-3 shrink-0 text-tertiary" />
                   </a>
                 ) : (
-                  <span className="truncate text-13 text-primary">{label}</span>
+                  <span className="truncate text-body-xs-regular text-primary">{label}</span>
                 )}
               </div>
               <div className="flex shrink-0 items-center gap-2">
-                {reference.author_login && <span className="text-12 text-tertiary">{reference.author_login}</span>}
+                {reference.author_login && (
+                  <span className="text-body-xs-regular text-tertiary">{reference.author_login}</span>
+                )}
                 <Badge
                   variant={GIT_REFERENCE_STATE_VARIANT[reference.state]}
                   size="xs"
