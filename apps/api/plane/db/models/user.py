@@ -51,6 +51,7 @@ def get_default_product_tour():
 
 class BotTypeEnum(models.TextChoices):
     WORKSPACE_SEED = "WORKSPACE_SEED", "Workspace Seed"
+    GIT_INTEGRATION = "GIT_INTEGRATION", "Git Integration"
 
 
 class User(AbstractBaseUser, PermissionsMixin):

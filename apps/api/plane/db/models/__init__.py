@@ -90,3 +90,5 @@ from .device import Device, DeviceSession
 from .sticky import Sticky
 
 from .description import Description, DescriptionVersion
+
+from .git_integration import GitRepository, IssueGitReference
