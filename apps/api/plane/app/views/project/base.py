@@ -186,6 +186,7 @@ class ProjectViewSet(BaseViewSet):
             "issue_views_view",
             "module_view",
             "release_view",
+            "is_issue_type_enabled",
             "page_view",
             "inbox_view",
             "guest_view_all_features",

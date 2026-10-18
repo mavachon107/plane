@@ -55,6 +55,7 @@ from .release import (
     ReleaseTagLiteSerializer,
     ReleaseWorkItemSerializer,
 )
+from .issue_type import IssueTypeSerializer, IssueTypeLiteSerializer
 from .state import StateSerializer, StateLiteSerializer
 from .view import IssueViewSerializer, ViewIssueListSerializer
 from .cycle import (

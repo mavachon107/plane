@@ -11,10 +11,10 @@ from plane.db.models import IssueType
 
 
 class IssueTypeSerializer(BaseSerializer):
-    # Annotated on the queryset from the ProjectIssueType join row: is_default on
-    # IssueType itself is the workspace default, which this project-scoped API
-    # never touches. Defaults only move through mark_as_default.
-    is_default = serializers.BooleanField(read_only=True)
+    # Annotated on the queryset from the ProjectIssueType join row, under another name
+    # because is_default is already a field on IssueType -- the workspace default, which
+    # this project-scoped API never touches. Defaults only move through mark_as_default.
+    is_default = serializers.BooleanField(source="project_is_default", read_only=True)
     project_ids = serializers.ListField(child=serializers.UUIDField(), read_only=True)
 
     class Meta:
@@ -34,7 +34,7 @@ class IssueTypeSerializer(BaseSerializer):
             "created_by",
             "updated_by",
         ]
-        read_only_fields = ["workspace", "is_default", "is_epic"]
+        read_only_fields = ["workspace", "is_default", "is_epic", "created_by", "updated_by"]
 
     def validate_name(self, value):
         project_id = self.context.get("project_id")

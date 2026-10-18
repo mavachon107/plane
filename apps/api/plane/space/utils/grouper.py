@@ -15,6 +15,7 @@ from typing import List, Optional, Dict, Any, Union
 from plane.db.models import (
     Cycle,
     Issue,
+    IssueType,
     Label,
     Module,
     Project,
@@ -221,6 +222,20 @@ def issue_group_values(
             return list(queryset.filter(project_id=project_id)) + ["None"]
         else:
             return list(queryset) + ["None"]
+    if field == "type_id":
+        # Mirrors plane/utils/grouper.py: ISSUE_GROUP_BY_ALLOWLIST is shared by both
+        # surfaces, so a field one grouper resolves has to be resolvable here too --
+        # otherwise a published board silently loses its empty groups.
+        queryset = IssueType.objects.filter(workspace__slug=slug, is_epic=False).values_list("id", flat=True)
+        if project_id:
+            return list(
+                queryset.filter(
+                    project_issue_types__project_id=project_id,
+                    project_issue_types__deleted_at__isnull=True,
+                ).distinct()
+            ) + ["None"]
+        return list(queryset.distinct()) + ["None"]
+
     if field == "project_id":
         queryset = Project.objects.filter(workspace__slug=slug).values_list("id", flat=True)
         return list(queryset)
