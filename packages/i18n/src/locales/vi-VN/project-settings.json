@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Phát triển",
+    "state": {
+      "open": "Đang mở",
+      "draft": "Bản nháp",
+      "merged": "Đã hợp nhất",
+      "closed": "Đã đóng",
+      "active": "Đang hoạt động",
+      "deleted": "Đã xóa"
+    },
+    "description": "Kết nối một kho lưu trữ GitHub với dự án này. Các nhánh và pull request có nhắc đến khóa của một mục công việc (ví dụ PROJ-123) sẽ được liên kết với mục công việc đó, và trạng thái của nó theo tiến độ của chúng.",
+    "owner": "Chủ sở hữu",
+    "repository": "Kho lưu trữ",
+    "connect": "Kết nối kho lưu trữ",
+    "disconnect": "Ngắt kết nối",
+    "connect_error": "Không thể kết nối kho lưu trữ. Vui lòng thử lại.",
+    "close_on_merge": "Hoàn thành mục công việc khi pull request được hợp nhất",
+    "close_on_merge_description": "Nếu không, chỉ pull request có từ khóa đóng, chẳng hạn \"Closes PROJ-123\", mới hoàn thành mục công việc.",
+    "webhook_setup": "Thiết lập webhook",
+    "payload_url": "URL payload",
+    "secret": "Khóa bí mật",
+    "secret_warning": "Hãy sao chép khóa bí mật này ngay. Nó sẽ không hiển thị lại.",
+    "secret_hidden": "Khóa bí mật chỉ hiển thị một lần khi kết nối kho lưu trữ. Hãy ngắt kết nối rồi kết nối lại để tạo khóa mới.",
+    "step_1": "Trong GitHub, mở Settings của kho lưu trữ, rồi Webhooks, rồi Add webhook.",
+    "step_2": "Dán URL payload và khóa bí mật, đặt loại nội dung là application/json.",
+    "step_3": "Chọn từng sự kiện: Branch or tag creation, Branch or tag deletion, Pushes và Pull requests.",
+    "copy": "Sao chép",
+    "copy_branch_name": "Sao chép tên nhánh",
+    "branch_name_copied": "Đã sao chép tên nhánh"
   }
 }

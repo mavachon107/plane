@@ -146,3 +146,4 @@ from .draft import (
     DraftIssueSerializer,
     DraftIssueDetailSerializer,
 )
+from .git_integration import GitRepositorySerializer, IssueGitReferenceSerializer

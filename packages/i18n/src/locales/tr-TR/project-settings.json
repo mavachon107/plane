@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Geliştirme",
+    "state": {
+      "open": "Açık",
+      "draft": "Taslak",
+      "merged": "Birleştirildi",
+      "closed": "Kapatıldı",
+      "active": "Etkin",
+      "deleted": "Silindi"
+    },
+    "description": "Bu projeye bir GitHub deposu bağlayın. Bir iş öğesi anahtarından (örneğin PROJ-123) söz eden dallar ve pull request'ler o iş öğesine bağlanır; öğenin durumu bunların ilerleyişini izler.",
+    "owner": "Sahip",
+    "repository": "Depo",
+    "connect": "Depoyu bağla",
+    "disconnect": "Bağlantıyı kes",
+    "connect_error": "Depo bağlanamadı. Lütfen tekrar deneyin.",
+    "close_on_merge": "Bir pull request birleştirildiğinde iş öğelerini tamamla",
+    "close_on_merge_description": "Aksi halde yalnızca \"Closes PROJ-123\" gibi bir kapatma anahtar sözcüğü içeren pull request'ler iş öğesini tamamlar.",
+    "webhook_setup": "Webhook kurulumu",
+    "payload_url": "Payload URL'si",
+    "secret": "Gizli anahtar",
+    "secret_warning": "Bu gizli anahtarı şimdi kopyalayın. Bir daha gösterilmeyecek.",
+    "secret_hidden": "Gizli anahtar, depo bağlanırken yalnızca bir kez gösterildi. Yenisini oluşturmak için bağlantıyı kesip yeniden bağlayın.",
+    "step_1": "GitHub'da deponun Settings bölümünü, ardından Webhooks'u, sonra Add webhook'u açın.",
+    "step_2": "Payload URL'sini ve gizli anahtarı yapıştırın, içerik türünü application/json olarak ayarlayın.",
+    "step_3": "Tek tek olayları seçin: Branch or tag creation, Branch or tag deletion, Pushes ve Pull requests.",
+    "copy": "Kopyala",
+    "copy_branch_name": "Dal adını kopyala",
+    "branch_name_copied": "Dal adı kopyalandı"
   }
 }

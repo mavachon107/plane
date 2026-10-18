@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Entwicklung",
+    "state": {
+      "open": "Offen",
+      "draft": "Entwurf",
+      "merged": "Zusammengeführt",
+      "closed": "Geschlossen",
+      "active": "Aktiv",
+      "deleted": "Gelöscht"
+    },
+    "description": "Verbinde ein GitHub-Repository mit diesem Projekt. Branches und Pull Requests, die einen Arbeitselement-Schlüssel erwähnen (z. B. PROJ-123), werden diesem Arbeitselement zugeordnet, und sein Status folgt ihrem Fortschritt.",
+    "owner": "Eigentümer",
+    "repository": "Repository",
+    "connect": "Repository verbinden",
+    "disconnect": "Trennen",
+    "connect_error": "Das Repository konnte nicht verbunden werden. Bitte versuche es erneut.",
+    "close_on_merge": "Arbeitselemente abschließen, wenn ein Pull Request zusammengeführt wird",
+    "close_on_merge_description": "Andernfalls schließen nur Pull Requests mit einem Schließen-Schlüsselwort wie „Closes PROJ-123“ das Arbeitselement ab.",
+    "webhook_setup": "Webhook-Einrichtung",
+    "payload_url": "Payload-URL",
+    "secret": "Geheimnis",
+    "secret_warning": "Kopiere dieses Geheimnis jetzt. Es wird nicht erneut angezeigt.",
+    "secret_hidden": "Das Geheimnis wurde nur einmal beim Verbinden des Repositorys angezeigt. Trenne und verbinde erneut, um ein neues zu erzeugen.",
+    "step_1": "Öffne in GitHub die Settings des Repositorys, dann Webhooks und dann Add webhook.",
+    "step_2": "Füge die Payload-URL und das Geheimnis ein und setze den Content-Type auf application/json.",
+    "step_3": "Wähle einzelne Ereignisse: Branch or tag creation, Branch or tag deletion, Pushes und Pull requests.",
+    "copy": "Kopieren",
+    "copy_branch_name": "Branch-Namen kopieren",
+    "branch_name_copied": "Branch-Name kopiert"
   }
 }

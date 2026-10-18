@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 // plane imports
 import { useTranslation } from "@plane/i18n";
 import { LinkOutline } from "@makeplane/propel/icons";
+import { GitBranch } from "lucide-react";
 import { IconButton } from "@makeplane/propel/components/icon-button";
 import { Icon } from "@makeplane/propel/components/icon";
 import { setToast } from "@plane/blocks/toast";
@@ -16,6 +17,7 @@ import { Tooltip } from "@makeplane/propel/components/tooltip";
 import { EIssuesStoreType } from "@plane/types";
 import { generateWorkItemLink, copyTextToClipboard } from "@plane/utils";
 // hooks
+import { generateBranchName } from "@/components/git-integration/helper";
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 import { useIssues } from "@/hooks/store/use-issues";
 import { useProject } from "@/hooks/store/use-project";
@@ -90,6 +92,19 @@ export const IssueDetailQuickActions = observer(function IssueDetailQuickActions
     }
   };
 
+  const handleCopyBranchName = async () => {
+    try {
+      await copyTextToClipboard(generateBranchName(projectIdentifier ?? "", issue.sequence_id, issue.name));
+      setToast({
+        type: "success",
+        title: t("git_integration.branch_name_copied"),
+        message: t("common.copied_to_clipboard"),
+      });
+    } catch (_error) {
+      setToast({ title: t("toast.error"), type: "error" });
+    }
+  };
+
   const handleDeleteIssue = async () => {
     try {
       const deleteIssue = issue?.archived_at ? removeArchivedIssue : removeIssue;
@@ -155,6 +170,15 @@ export const IssueDetailQuickActions = observer(function IssueDetailQuickActions
                 onClick={handleCopyText}
                 icon={<Icon icon={LinkOutline} />}
                 aria-label={t("common.actions.copy_link")}
+              />
+            </Tooltip>
+            <Tooltip label={t("git_integration.copy_branch_name")} disabled={isMobile}>
+              <IconButton
+                variant="secondary"
+                size="md"
+                onClick={handleCopyBranchName}
+                icon={<Icon icon={GitBranch} />}
+                aria-label={t("git_integration.copy_branch_name")}
               />
             </Tooltip>
             <WorkItemDetailQuickActions

@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "Rozwój",
+    "state": {
+      "open": "Otwarty",
+      "draft": "Wersja robocza",
+      "merged": "Scalony",
+      "closed": "Zamknięty",
+      "active": "Aktywna",
+      "deleted": "Usunięta"
+    },
+    "description": "Połącz jedno repozytorium GitHub z tym projektem. Gałęzie i pull requesty wspominające klucz elementu pracy (np. PROJ-123) są powiązywane z tym elementem, a jego stan podąża za ich postępem.",
+    "owner": "Właściciel",
+    "repository": "Repozytorium",
+    "connect": "Połącz repozytorium",
+    "disconnect": "Rozłącz",
+    "connect_error": "Nie udało się połączyć repozytorium. Spróbuj ponownie.",
+    "close_on_merge": "Ukończ elementy pracy po scaleniu pull requesta",
+    "close_on_merge_description": "W przeciwnym razie element pracy kończą tylko pull requesty ze słowem kluczowym zamykającym, np. \"Closes PROJ-123\".",
+    "webhook_setup": "Konfiguracja webhooka",
+    "payload_url": "Adres URL ładunku",
+    "secret": "Sekret",
+    "secret_warning": "Skopiuj ten sekret teraz. Nie zostanie wyświetlony ponownie.",
+    "secret_hidden": "Sekret został wyświetlony jednorazowo podczas łączenia repozytorium. Rozłącz i połącz ponownie, aby wygenerować nowy.",
+    "step_1": "W GitHubie otwórz Settings repozytorium, następnie Webhooks, a potem Add webhook.",
+    "step_2": "Wklej adres URL ładunku i sekret oraz ustaw typ zawartości na application/json.",
+    "step_3": "Wybierz poszczególne zdarzenia: Branch or tag creation, Branch or tag deletion, Pushes oraz Pull requests.",
+    "copy": "Kopiuj",
+    "copy_branch_name": "Kopiuj nazwę gałęzi",
+    "branch_name_copied": "Skopiowano nazwę gałęzi"
   }
 }

@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "开发",
+    "state": {
+      "open": "打开",
+      "draft": "草稿",
+      "merged": "已合并",
+      "closed": "已关闭",
+      "active": "活动",
+      "deleted": "已删除"
+    },
+    "description": "将一个 GitHub 仓库连接到此项目。提及工作项键（例如 PROJ-123）的分支和拉取请求会关联到该工作项，其状态会随它们的进展而变化。",
+    "owner": "所有者",
+    "repository": "仓库",
+    "connect": "连接仓库",
+    "disconnect": "断开连接",
+    "connect_error": "无法连接仓库。请重试。",
+    "close_on_merge": "合并拉取请求时完成工作项",
+    "close_on_merge_description": "关闭后，只有包含关闭关键词（如 \"Closes PROJ-123\"）的拉取请求才会完成工作项。",
+    "webhook_setup": "Webhook 设置",
+    "payload_url": "Payload URL",
+    "secret": "密钥",
+    "secret_warning": "请立即复制此密钥，之后将不再显示。",
+    "secret_hidden": "密钥仅在连接仓库时显示一次。如需生成新密钥，请断开连接后重新连接。",
+    "step_1": "在 GitHub 中依次打开仓库的 Settings、Webhooks、Add webhook。",
+    "step_2": "粘贴 Payload URL 和密钥，并将内容类型设置为 application/json。",
+    "step_3": "选择单个事件：Branch or tag creation、Branch or tag deletion、Pushes 和 Pull requests。",
+    "copy": "复制",
+    "copy_branch_name": "复制分支名称",
+    "branch_name_copied": "分支名称已复制"
   }
 }

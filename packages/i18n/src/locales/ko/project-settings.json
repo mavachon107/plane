@@ -521,6 +521,39 @@
           }
         }
       }
+    },
+    "github": {
+      "label": "GitHub"
     }
+  },
+  "git_integration": {
+    "development": "개발",
+    "state": {
+      "open": "열림",
+      "draft": "초안",
+      "merged": "병합됨",
+      "closed": "닫힘",
+      "active": "활성",
+      "deleted": "삭제됨"
+    },
+    "description": "이 프로젝트에 GitHub 저장소 하나를 연결합니다. 작업 항목 키(예: PROJ-123)를 언급하는 브랜치와 풀 리퀘스트는 해당 작업 항목에 연결되며, 작업 항목의 상태는 이들의 진행을 따릅니다.",
+    "owner": "소유자",
+    "repository": "저장소",
+    "connect": "저장소 연결",
+    "disconnect": "연결 해제",
+    "connect_error": "저장소를 연결할 수 없습니다. 다시 시도해 주세요.",
+    "close_on_merge": "풀 리퀘스트가 병합되면 작업 항목 완료",
+    "close_on_merge_description": "끄면 \"Closes PROJ-123\" 같은 종료 키워드가 있는 풀 리퀘스트만 작업 항목을 완료합니다.",
+    "webhook_setup": "웹훅 설정",
+    "payload_url": "페이로드 URL",
+    "secret": "시크릿",
+    "secret_warning": "이 시크릿을 지금 복사하세요. 다시 표시되지 않습니다.",
+    "secret_hidden": "시크릿은 저장소를 연결할 때 한 번만 표시되었습니다. 새로 생성하려면 연결을 해제한 뒤 다시 연결하세요.",
+    "step_1": "GitHub에서 저장소의 Settings, Webhooks, Add webhook 순서로 엽니다.",
+    "step_2": "페이로드 URL과 시크릿을 붙여넣고 콘텐츠 유형을 application/json으로 설정합니다.",
+    "step_3": "개별 이벤트를 선택합니다: Branch or tag creation, Branch or tag deletion, Pushes, Pull requests.",
+    "copy": "복사",
+    "copy_branch_name": "브랜치 이름 복사",
+    "branch_name_copied": "브랜치 이름이 복사되었습니다"
   }
 }
