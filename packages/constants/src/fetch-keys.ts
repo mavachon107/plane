@@ -169,6 +169,9 @@ export const PROJECT_ME_INFORMATION = (_workspaceSlug: string, projectId: string
 export const PROJECT_LABELS = (projectId: string, projectRole: EUserPermissions | undefined) =>
   `PROJECT_LABELS_${projectId.toString().toUpperCase()}_${projectRole}`;
 
+export const PROJECT_WORK_ITEM_TYPES = (projectId: string, projectRole: EUserPermissions | undefined) =>
+  `PROJECT_WORK_ITEM_TYPES_${projectId.toString().toUpperCase()}_${projectRole}`;
+
 export const PROJECT_MEMBERS = (projectId: string, projectRole: EUserPermissions | undefined) =>
   `PROJECT_MEMBERS_${projectId.toString().toUpperCase()}_${projectRole}`;
 

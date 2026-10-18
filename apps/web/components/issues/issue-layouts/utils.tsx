@@ -17,6 +17,7 @@ import {
   DueDateOutline,
   EstimateOutline,
   LabelsOutline,
+  LayerStackOutline,
   LinkOutline,
   MembersOutline,
   ModuleOutline,
@@ -153,6 +154,7 @@ export const getGroupByColumns = ({
     assignees: getAssigneeColumns,
     created_by: getCreatedByColumns,
     team_project: getTeamProjectColumns,
+    issue_type: getWorkItemTypeColumns,
   };
 
   // Get and return the columns for the specified group by option
@@ -280,6 +282,39 @@ const getPriorityColumns = (): IGroupByColumn[] => {
     icon: <PriorityIcon priority={priority?.key} />,
     payload: { priority: priority.key },
   }));
+};
+
+const getWorkItemTypeColumns = ({ projectId }: TGetColumns): IGroupByColumn[] | undefined => {
+  const { currentProjectDetails } = store.projectRoot.project;
+  // Types are linked per project, so grouping by type only means anything inside one
+  const currentProjectId = projectId ?? currentProjectDetails?.id;
+  if (!currentProjectId) return;
+  // undefined until the project's types have been fetched -- distinct from "none exist"
+  const workItemTypes = store.workItemType.getProjectWorkItemTypes(currentProjectId);
+  if (!workItemTypes) return;
+
+  const columns: IGroupByColumn[] = workItemTypes.map((workItemType) => ({
+    id: workItemType.id,
+    name: workItemType.name,
+    icon: (
+      <div className="grid h-6 w-6 flex-shrink-0 place-items-center">
+        <Logo logo={workItemType.logo_props} size={14} type="lucide" />
+      </div>
+    ),
+    payload: { type_id: workItemType.id },
+  }));
+
+  // Enabling types never backfills, so untyped work items always exist and need a home.
+  // Payload stays empty, as it does for the other optional groupings: dropping a card
+  // here is a no-op rather than a way to clear the type.
+  columns.push({
+    id: "None",
+    name: "None",
+    icon: <LayerStackOutline className="h-3.5 w-3.5 text-tertiary" />,
+    payload: {},
+  });
+
+  return columns;
 };
 
 const getLabelsColumns = ({ isWorkspaceLevel }: TGetColumns): IGroupByColumn[] => {

@@ -21,6 +21,8 @@ import {
   FilterOrderBy,
   FilterSubGroupBy,
 } from "@/components/issues/issue-layouts/filters";
+// hooks
+import { useProject } from "@/hooks/store/use-project";
 
 type Props = {
   displayFilters: IIssueDisplayFilterOptions | undefined;
@@ -47,10 +49,18 @@ export const DisplayFiltersSelection = observer(function DisplayFiltersSelection
     isEpic = false,
   } = props;
 
+  const { currentProjectDetails } = useProject();
+
   const isDisplayFilterEnabled = (displayFilter: keyof IIssueDisplayFilterOptions) =>
     Object.keys(layoutDisplayFiltersOptions?.display_filters ?? {}).includes(displayFilter);
 
   const computedIgnoreGroupedFilters: Partial<TIssueGroupByOptions>[] = [];
+  // Unlike cycles and modules, which views can switch off independently of the project,
+  // work item types are on or off for the whole project -- so this reads the project
+  // rather than taking a prop through every header that renders this panel.
+  if (!currentProjectDetails?.is_issue_type_enabled) {
+    computedIgnoreGroupedFilters.push("issue_type");
+  }
   if (cycleViewDisabled) {
     ignoreGroupedFilters.push("cycle");
   }

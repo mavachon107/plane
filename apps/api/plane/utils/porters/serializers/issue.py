@@ -20,6 +20,7 @@ class IssueExportSerializer(IssueSerializer):
     project_name = serializers.CharField(source='project.name', read_only=True, default="")
     project_identifier = serializers.CharField(source='project.identifier', read_only=True, default="")
     state_name = serializers.CharField(source='state.name', read_only=True, default="")
+    type_name = serializers.CharField(source='type.name', read_only=True, default="")
     created_by_name = serializers.CharField(source='created_by.full_name', read_only=True, default="")
 
     assignees = serializers.SerializerMethodField()
@@ -42,6 +43,7 @@ class IssueExportSerializer(IssueSerializer):
             "sequence_id",
             "name",
             "state_name",
+            "type_name",
             "priority",
             "assignees",
             "subscribers",

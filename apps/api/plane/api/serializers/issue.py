@@ -173,9 +173,13 @@ class IssueSerializer(BaseSerializer):
         issue_type = validated_data.pop("type", None)
 
         if not issue_type:
-            # Get default issue type
-            issue_type = IssueType.objects.filter(project_issue_types__project_id=project_id, is_default=True).first()
-            issue_type = issue_type
+            # The *project* default lives on the ProjectIssueType join row; IssueType.is_default
+            # is the workspace default and is never set for project-scoped types.
+            issue_type = IssueType.objects.filter(
+                project_issue_types__project_id=project_id,
+                project_issue_types__is_default=True,
+                project_issue_types__deleted_at__isnull=True,
+            ).first()
 
         issue = Issue.objects.create(**validated_data, project_id=project_id, type=issue_type)
 

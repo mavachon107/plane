@@ -31,6 +31,10 @@ class TestIssueGroupByAllowlist:
             "created_by",
             "target_date",
             "start_date",
+            # Grouping work items by their type. A concrete column on Issue, resolved by
+            # issue_group_values() in both groupers, so it is safe to reach F()/.values()/
+            # .order_by()/partition_by.
+            "type_id",
         }
         assert ISSUE_GROUP_BY_ALLOWLIST == frozenset(expected)
 

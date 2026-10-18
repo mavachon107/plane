@@ -21,6 +21,7 @@ from plane.db.models import (
     IssueAssignee,
     ModuleIssue,
     IssueLabel,
+    IssueType,
 )
 from typing import Optional, Dict, Tuple, Any, Union, List
 
@@ -107,6 +108,7 @@ def issue_on_results(
         "id",
         "name",
         "state_id",
+        "type_id",
         "sort_order",
         "completed_at",
         "estimate_point",
@@ -182,6 +184,20 @@ def issue_group_values(
         if project_id:
             return list(queryset.filter(project_id=project_id)) + ["None"]
         return list(queryset) + ["None"]
+
+    if field == "type_id":
+        # Types are workspace-scoped but reached through the project link, so an unlinked
+        # type must not surface as a column. "None" is always present: enabling types
+        # never backfills, so untyped work items outlive the switch.
+        queryset = IssueType.objects.filter(workspace__slug=slug, is_epic=False).values_list("id", flat=True)
+        if project_id:
+            return list(
+                queryset.filter(
+                    project_issue_types__project_id=project_id,
+                    project_issue_types__deleted_at__isnull=True,
+                ).distinct()
+            ) + ["None"]
+        return list(queryset.distinct()) + ["None"]
 
     if field == "project_id":
         queryset = Project.objects.filter(workspace__slug=slug).values_list("id", flat=True)

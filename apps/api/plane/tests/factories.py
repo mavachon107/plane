@@ -6,7 +6,15 @@ import factory
 from uuid import uuid4
 from django.utils import timezone
 
-from plane.db.models import User, Workspace, WorkspaceMember, Project, ProjectMember
+from plane.db.models import (
+    User,
+    Workspace,
+    WorkspaceMember,
+    Project,
+    ProjectMember,
+    IssueType,
+    ProjectIssueType,
+)
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -82,5 +90,39 @@ class ProjectMemberFactory(factory.django.DjangoModelFactory):
     project = factory.SubFactory(ProjectFactory)
     member = factory.SubFactory(UserFactory)
     role = 20  # Admin role by default
+    created_at = factory.LazyFunction(timezone.now)
+    updated_at = factory.LazyFunction(timezone.now)
+
+
+class IssueTypeFactory(factory.django.DjangoModelFactory):
+    """Factory for creating IssueType (work item type) instances"""
+
+    class Meta:
+        model = IssueType
+
+    id = factory.LazyFunction(uuid4)
+    workspace = factory.SubFactory(WorkspaceFactory)
+    name = factory.Sequence(lambda n: f"Type {n}")
+    level = 0
+    is_epic = False
+    is_active = True
+    created_at = factory.LazyFunction(timezone.now)
+    updated_at = factory.LazyFunction(timezone.now)
+
+
+class ProjectIssueTypeFactory(factory.django.DjangoModelFactory):
+    """Factory for the join row that links a work item type to a project.
+
+    The project default lives here, not on IssueType.is_default (the workspace default).
+    """
+
+    class Meta:
+        model = ProjectIssueType
+
+    id = factory.LazyFunction(uuid4)
+    project = factory.SubFactory(ProjectFactory)
+    issue_type = factory.SubFactory(IssueTypeFactory)
+    level = 0
+    is_default = False
     created_at = factory.LazyFunction(timezone.now)
     updated_at = factory.LazyFunction(timezone.now)

@@ -62,6 +62,10 @@ export const ISSUE_FILTER_DEFAULT_DATA: Record<TIssueDisplayFilterOptions, keyof
   module: "module_ids",
   state: "state_id",
   "state_detail.group": "state_group" as keyof IIssue, // state_detail.group is only being used for state_group display,
+  // Published boards do not serve a work item's type, so IIssue omits type_id. This
+  // entry exists only to satisfy the exhaustive Record -- grouping by type is not
+  // offered in the public board UI.
+  issue_type: "type_id" as keyof IIssue,
   priority: "priority",
   labels: "label_ids",
   created_by: "created_by",
