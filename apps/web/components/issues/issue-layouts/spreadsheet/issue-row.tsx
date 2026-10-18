@@ -283,8 +283,11 @@ const IssueRowDetails = observer(function IssueRowDetails(props: IssueRowDetails
               }
             )}
           >
-            {/* Identifier section - conditionally rendered */}
-            {displayProperties?.key && (
+            {/* Identifier section - conditionally rendered. `key` and `issue_type` are
+                independent display properties, so gating on `key` alone would hide the
+                type glyph whenever the PROJ-1 text is switched off; list/block.tsx
+                already mounts the identifier on either one. */}
+            {(displayProperties?.key || displayProperties?.issue_type) && (
               <div className="flex h-full min-w-24 flex-shrink-0 items-center">
                 <div className="relative flex cursor-pointer items-center text-11 hover:text-primary">
                   {issueDetail.project_id && (

@@ -25,6 +25,7 @@ import {
   PROJECT_MODULES,
   PROJECT_VIEWS,
   PROJECT_INTAKE_STATE,
+  PROJECT_WORK_ITEM_TYPES,
 } from "@plane/constants";
 // hooks
 import { useProjectEstimates } from "@/hooks/store/estimates";
@@ -35,6 +36,7 @@ import { useModule } from "@/hooks/store/use-module";
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 import { useProjectView } from "@/hooks/store/use-project-view";
+import { useWorkItemType } from "@/hooks/store/use-work-item-type";
 import { useUser, useUserPermissions } from "@/hooks/store/user";
 import { useTimeLineChart } from "@/hooks/use-timeline-chart";
 
@@ -51,7 +53,7 @@ export const ProjectAuthWrapper = observer(function ProjectAuthWrapper(props: IP
   const [isJoiningProject, setIsJoiningProject] = useState(false);
   // store hooks
   const { fetchUserProjectInfo, allowPermissions, getProjectRoleByWorkspaceSlugAndProjectId } = useUserPermissions();
-  const { fetchProjectDetails } = useProject();
+  const { fetchProjectDetails, getProjectById } = useProject();
   const { joinProject } = useUserPermissions();
   const { fetchAllCycles } = useCycle();
   const { fetchModulesSlim, fetchModules } = useModule();
@@ -64,6 +66,7 @@ export const ProjectAuthWrapper = observer(function ProjectAuthWrapper(props: IP
   const { data: currentUserData } = useUser();
   const { fetchProjectLabels } = useLabel();
   const { getProjectEstimates } = useProjectEstimates();
+  const { fetchProjectWorkItemTypes } = useWorkItemType();
   // derived values
   const hasPermissionToCurrentProject = allowPermissions(
     [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],
@@ -135,6 +138,16 @@ export const ProjectAuthWrapper = observer(function ProjectAuthWrapper(props: IP
     revalidateIfStale: false,
     revalidateOnFocus: false,
   });
+  // fetching project work item types -- every layout renders a work item's type through
+  // that type's glyph, so the types have to be in the store wherever work items are
+  // listed, not only on the settings page and the detail-view switcher. Skipped while
+  // the feature is off, since the project then has no types to list.
+  const isWorkItemTypeEnabled = Boolean(getProjectById(projectId)?.is_issue_type_enabled);
+  useSWR(
+    isWorkItemTypeEnabled ? PROJECT_WORK_ITEM_TYPES(projectId, currentProjectRole) : null,
+    isWorkItemTypeEnabled ? () => fetchProjectWorkItemTypes(workspaceSlug, projectId) : null,
+    { revalidateIfStale: false, revalidateOnFocus: false }
+  );
 
   // handle join project
   const handleJoinProject = () => {
