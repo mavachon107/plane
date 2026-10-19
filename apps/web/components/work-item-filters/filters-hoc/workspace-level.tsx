@@ -21,6 +21,7 @@ import { useLabel } from "@/hooks/store/use-label";
 import { useMember } from "@/hooks/store/use-member";
 import { useProject } from "@/hooks/store/use-project";
 import { useUser, useUserPermissions } from "@/hooks/store/user";
+import { useWorkItemTypeFilterIds } from "@/hooks/work-item-filters/use-work-item-type-filter-ids";
 // local imports
 import { WorkItemFiltersHOC } from "./base";
 import type { TEnableSaveViewProps, TEnableUpdateViewProps, TSharedWorkItemFiltersHOCProps } from "./shared";
@@ -46,6 +47,7 @@ export const WorkspaceLevelWorkItemFiltersHOC = observer(function WorkspaceLevel
     workspace: { getWorkspaceMemberIds },
   } = useMember();
   const { getWorkspaceLabelIds } = useLabel();
+  const typeIds = useWorkItemTypeFilterIds(workspaceSlug, joinedProjectIds);
   // derived values
   const hasWorkspaceMemberLevelPermissions = allowPermissions(
     [EUserProjectRoles.ADMIN, EUserProjectRoles.MEMBER],
@@ -145,6 +147,7 @@ export const WorkspaceLevelWorkItemFiltersHOC = observer(function WorkspaceLevel
             title: "Success!",
             message: "Your view has been updated successfully.",
           });
+          return undefined;
         })
         .catch(() => {
           setToast({
@@ -191,6 +194,7 @@ export const WorkspaceLevelWorkItemFiltersHOC = observer(function WorkspaceLevel
         memberIds={getWorkspaceMemberIds(workspaceSlug)}
         labelIds={getWorkspaceLabelIds(workspaceSlug)}
         projectIds={joinedProjectIds}
+        typeIds={typeIds}
         saveViewOptions={saveViewOptions}
         updateViewOptions={updateViewOptions}
       >

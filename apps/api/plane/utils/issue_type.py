@@ -24,7 +24,7 @@ DEFAULT_ISSUE_TYPES = [
         "name": "Task",
         "level": 0,
         "is_default": True,
-        "logo_props": {"in_use": "icon", "icon": {"name": "CheckSquare", "color": "#f2be02"}},
+        "logo_props": {"in_use": "icon", "icon": {"name": "CheckSquare", "color": "#02b5ed"}},
     },
     {
         "name": "Bug",

@@ -24,6 +24,7 @@ import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 import { useProjectView } from "@/hooks/store/use-project-view";
 import { useUser, useUserPermissions } from "@/hooks/store/user";
+import { useWorkItemTypeFilterIds } from "@/hooks/work-item-filters/use-work-item-type-filter-ids";
 // local imports
 import { WorkItemFiltersHOC } from "./base";
 import type { TEnableSaveViewProps, TEnableUpdateViewProps, TSharedWorkItemFiltersHOCProps } from "./shared";
@@ -54,6 +55,7 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
   } = useMember();
   const { getProjectModuleIds } = useModule();
   const { getProjectStateIds } = useProjectState();
+  const typeIds = useWorkItemTypeFilterIds(workspaceSlug, [projectId]);
   // derived values
   const hasProjectMemberLevelPermissions = allowPermissions(
     [EUserProjectRoles.ADMIN, EUserProjectRoles.MEMBER],
@@ -156,6 +158,7 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
             title: "Success!",
             message: "Your view has been updated successfully.",
           });
+          return undefined;
         })
         .catch(() => {
           setToast({
@@ -207,6 +210,7 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
         memberIds={getProjectMemberIds(projectId, false) ?? undefined}
         moduleIds={getProjectModuleIds(projectId) ?? undefined}
         stateIds={getProjectStateIds(projectId)}
+        typeIds={typeIds}
         saveViewOptions={saveViewOptions}
         updateViewOptions={updateViewOptions}
       >

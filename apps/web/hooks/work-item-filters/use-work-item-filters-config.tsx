@@ -18,6 +18,7 @@ import {
   StartDateOutline,
   StateOutline,
   UserOutline,
+  LayerStackOutline,
 } from "@makeplane/propel/icons";
 // plane imports
 import { Avatar } from "@makeplane/propel/components/avatar";
@@ -32,6 +33,7 @@ import type {
   IModule,
   IProject,
   TWorkItemFilterProperty,
+  TWorkItemType,
 } from "@plane/types";
 
 import {
@@ -51,6 +53,7 @@ import {
   getSubscriberFilterConfig,
   getTargetDateFilterConfig,
   getUpdatedAtFilterConfig,
+  getWorkItemTypeFilterConfig,
   isLoaderReady,
 } from "@plane/utils";
 // store hooks
@@ -60,6 +63,7 @@ import { useMember } from "@/hooks/store/use-member";
 import { useModule } from "@/hooks/store/use-module";
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
+import { useWorkItemType } from "@/hooks/store/use-work-item-type";
 // plane web imports
 import { useFiltersOperatorConfigs } from "@/hooks/rich-filters/use-filters-operator-configs";
 
@@ -72,6 +76,7 @@ export type TWorkItemFiltersEntityProps = {
   projectId?: string;
   projectIds?: string[];
   stateIds?: string[];
+  typeIds?: string[];
 };
 
 export type TUseWorkItemFiltersConfigProps = {
@@ -89,8 +94,18 @@ export type TWorkItemFiltersConfig = {
 };
 
 export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps): TWorkItemFiltersConfig => {
-  const { allowedFilters, cycleIds, labelIds, memberIds, moduleIds, projectId, projectIds, stateIds, workspaceSlug } =
-    props;
+  const {
+    allowedFilters,
+    cycleIds,
+    labelIds,
+    memberIds,
+    moduleIds,
+    projectId,
+    projectIds,
+    stateIds,
+    typeIds,
+    workspaceSlug,
+  } = props;
   // store hooks
   const { loader: projectLoader, getProjectById } = useProject();
   const { getCycleById } = useCycle();
@@ -98,6 +113,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
   const { getModuleById } = useModule();
   const { getStateById } = useProjectState();
   const { getUserDetails } = useMember();
+  const { getWorkItemTypeById } = useWorkItemType();
   // derived values
   const operatorConfigs = useFiltersOperatorConfigs({ workspaceSlug });
   const filtersToShow = useMemo(() => new Set(allowedFilters), [allowedFilters]);
@@ -131,11 +147,17 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
     [moduleIds, getModuleById]
   );
   const projects = useMemo(
-    () =>
-      projectIds
-        ? (projectIds.map((projectId) => getProjectById(projectId)).filter((project) => project) as IProject[])
-        : [],
+    () => (projectIds ? (projectIds.map((id) => getProjectById(id)).filter((item) => item) as IProject[]) : []),
     [projectIds, getProjectById]
+  );
+  const workItemTypes = useMemo(
+    () =>
+      typeIds
+        ? (typeIds
+            .map((typeId) => getWorkItemTypeById(typeId))
+            .filter((workItemType) => workItemType) as TWorkItemType[])
+        : [],
+    [typeIds, getWorkItemTypeById]
   );
   const areAllConfigsInitialized = useMemo(() => isLoaderReady(projectLoader), [projectLoader]);
 
@@ -356,10 +378,28 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
         isEnabled: isFilterEnabled("project_id") && projects !== undefined,
         filterIcon: ProjectsOutline,
         projects: projects,
-        getOptionIcon: (project) => <Logo logo={project.logo_props} size={12} />,
+        getOptionIcon: (projectDetails) => <Logo logo={projectDetails.logo_props} size={12} />,
         ...operatorConfigs,
       }),
     [isFilterEnabled, projects, operatorConfigs]
+  );
+
+  // work item type filter config
+  const workItemTypeFilterConfig = useMemo(
+    () =>
+      getWorkItemTypeFilterConfig<TWorkItemFilterProperty>("type_id")({
+        isEnabled: isFilterEnabled("type_id") && typeIds !== undefined && workItemTypes.length > 0,
+        filterIcon: LayerStackOutline,
+        getOptionIcon: (workItemType) =>
+          workItemType.logo_props?.in_use ? (
+            <Logo logo={workItemType.logo_props} size={12} type="lucide" withBackground />
+          ) : (
+            <LayerStackOutline className="h-3 w-3 flex-shrink-0" />
+          ),
+        workItemTypes,
+        ...operatorConfigs,
+      }),
+    [isFilterEnabled, typeIds, workItemTypes, operatorConfigs]
   );
 
   return {
@@ -370,6 +410,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
       assigneeFilterConfig,
       priorityFilterConfig,
       projectFilterConfig,
+      workItemTypeFilterConfig,
       mentionFilterConfig,
       labelFilterConfig,
       cycleFilterConfig,
@@ -383,6 +424,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
     ],
     configMap: {
       project_id: projectFilterConfig,
+      type_id: workItemTypeFilterConfig,
       state_group: stateGroupFilterConfig,
       state_id: stateFilterConfig,
       label_id: labelFilterConfig,
