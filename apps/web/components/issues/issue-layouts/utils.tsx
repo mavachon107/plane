@@ -298,7 +298,7 @@ const getWorkItemTypeColumns = ({ projectId }: TGetColumns): IGroupByColumn[] | 
     name: workItemType.name,
     icon: (
       <div className="grid h-6 w-6 flex-shrink-0 place-items-center">
-        <Logo logo={workItemType.logo_props} size={14} type="lucide" />
+        <Logo logo={workItemType.logo_props} size={12} type="lucide" withBackground />
       </div>
     ),
     payload: { type_id: workItemType.id },

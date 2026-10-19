@@ -67,11 +67,13 @@ export const WorkItemTypeListItem = observer(function WorkItemTypeListItem(props
   return (
     <div className="flex items-center justify-between gap-4 rounded-md border border-subtle-1 px-4 py-3">
       <div className="flex min-w-0 items-center gap-3">
-        <span className="grid size-8 flex-shrink-0 place-items-center rounded-md bg-surface-2">
+        <span className="grid flex-shrink-0 place-items-center">
           {workItemType.logo_props?.in_use ? (
-            <Logo logo={workItemType.logo_props} size={16} type="lucide" />
+            <Logo logo={workItemType.logo_props} size={18} type="lucide" withBackground />
           ) : (
-            <LayerStackOutline className="size-4 text-tertiary" />
+            <span className="grid size-8 place-items-center rounded-md bg-surface-2">
+              <LayerStackOutline className="size-4 text-tertiary" />
+            </span>
           )}
         </span>
         <div className="min-w-0">

@@ -18,9 +18,11 @@ export type LogoProps = {
   logo?: LogoType;
   size?: number;
   type?: "lucide" | "material";
+  // Lucide icons only: draws the glyph on a rounded tile tinted with the icon's own colour
+  withBackground?: boolean;
 };
 
-export function Logo({ logo, size = 16, type = "material" }: LogoProps) {
+export function Logo({ logo, size = 16, type = "material", withBackground = false }: LogoProps) {
   const isMaterialSymbolsFontLoaded = useFontFaceObserver([
     {
       family: "Material Symbols Rounded",
@@ -68,7 +70,19 @@ export function Logo({ logo, size = 16, type = "material" }: LogoProps) {
       if (!lucideIcon) return null;
 
       const LucideIconElement = lucideIcon.element;
-      return <LucideIconElement style={{ color, height: size, width: size }} />;
+      const glyph = <LucideIconElement style={{ color, height: size, width: size }} />;
+      if (!withBackground || !color) return glyph;
+
+      // 8-digit hex: the swatch colour at ~15% alpha
+      const padding = Math.round(size * 0.35);
+      return (
+        <span
+          className="flex shrink-0 items-center justify-center rounded-md"
+          style={{ backgroundColor: `${color}26`, padding }}
+        >
+          {glyph}
+        </span>
+      );
     }
 
     if (!isMaterialSymbolsFontLoaded) return loadingSkeleton;

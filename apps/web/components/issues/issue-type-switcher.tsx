@@ -26,7 +26,7 @@ import { IssueIdentifier } from "@/components/issues/issue-detail/issue-identifi
 // Module scope: it closes over nothing, so it need not be rebuilt on every render
 const renderLogo = (workItemType: TWorkItemType | null | undefined) =>
   workItemType?.logo_props?.in_use ? (
-    <Logo logo={workItemType.logo_props} size={14} type="lucide" />
+    <Logo logo={workItemType.logo_props} size={12} type="lucide" withBackground />
   ) : (
     <LayerStackOutline className="h-4 w-4 flex-shrink-0 text-tertiary" />
   );

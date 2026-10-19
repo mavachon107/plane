@@ -46,7 +46,7 @@ export const IssueIdentifier = observer(function IssueIdentifier(props: TIssueId
     <div className="flex shrink-0 items-center space-x-2">
       {logo && (
         <span className="flex shrink-0 items-center" aria-label={workItemType?.name}>
-          <Logo logo={logo} size={14} type="lucide" />
+          <Logo logo={logo} size={12} type="lucide" withBackground />
         </span>
       )}
       {shouldRenderIssueID && (
