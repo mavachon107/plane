@@ -6,11 +6,10 @@
 from plane.db.models import IssueType, ProjectIssueType
 
 
-# "Work Item" is the project default, matching the shipped copy at
-# work_item_types.settings.set_default_confirmation.description, which names
-# "Plane's Work Item" as the type a project falls back to.
+# "Task" is the project default. The glyphs follow the set shown in Plane's
+# "Epics is becoming a work item type" post: checked square, mountain, bookmark, bug.
 #
-# Each type ships a distinct glyph so the four are told apart at a glance in the
+# Each type ships a distinct glyph so the five are told apart at a glance in the
 # work item layouts, the way Jira colour-codes Story/Bug/Task.
 #
 # Two constraints on these values, both silent when broken:
@@ -22,16 +21,16 @@ from plane.db.models import IssueType, ProjectIssueType
 #     colour as selected rather than as a custom one.
 DEFAULT_ISSUE_TYPES = [
     {
-        "name": "Work Item",
+        "name": "Task",
         "level": 0,
         "is_default": True,
-        "logo_props": {"in_use": "icon", "icon": {"name": "FileText", "color": "#6d7b8a"}},
+        "logo_props": {"in_use": "icon", "icon": {"name": "CheckSquare", "color": "#f2be02"}},
     },
     {
         "name": "Bug",
         "level": 1,
         "is_default": False,
-        "logo_props": {"in_use": "icon", "icon": {"name": "AlertCircle", "color": "#f38e82"}},
+        "logo_props": {"in_use": "icon", "icon": {"name": "Bug", "color": "#f38e82"}},
     },
     {
         "name": "Feature",
@@ -40,10 +39,16 @@ DEFAULT_ISSUE_TYPES = [
         "logo_props": {"in_use": "icon", "icon": {"name": "Bookmark", "color": "#02b55c"}},
     },
     {
-        "name": "Task",
+        "name": "Epic",
         "level": 3,
         "is_default": False,
-        "logo_props": {"in_use": "icon", "icon": {"name": "CheckSquare", "color": "#02b5ed"}},
+        "logo_props": {"in_use": "icon", "icon": {"name": "Epic", "color": "#5e6ad2"}},
+    },
+    {
+        "name": "Question",
+        "level": 4,
+        "is_default": False,
+        "logo_props": {"in_use": "icon", "icon": {"name": "HelpCircle", "color": "#e57a00"}},
     },
 ]
 
@@ -62,7 +67,8 @@ def seed_default_issue_types(project):
     Existing ``Issue`` rows are never touched: enabling types does not backfill,
     so work items created beforehand keep ``type = NULL`` until someone sets one.
 
-    Epics are deliberately out of scope, so ``is_epic`` is never set here.
+    "Epic" is seeded as an ordinary type: ``is_epic`` is never set here, because the
+    flag hides a type from the type list and the grouper.
     """
     if ProjectIssueType.objects.filter(project_id=project.id).exists():
         return []

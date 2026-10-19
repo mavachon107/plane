@@ -262,10 +262,10 @@ class TestIssueTypeEnable:
 
         project.refresh_from_db()
         assert project.is_issue_type_enabled is True
-        assert [row["name"] for row in response.data] == ["Work Item", "Bug", "Feature", "Task"]
+        assert [row["name"] for row in response.data] == ["Task", "Bug", "Feature", "Epic", "Question"]
 
         defaults = [row["name"] for row in response.data if row["is_default"]]
-        assert defaults == ["Work Item"]
+        assert defaults == ["Task"]
 
     def test_enable_gives_every_type_a_distinct_icon(self, session_client, workspace, project):
         """Every layout renders a type through its glyph alone, so a seeded type without
@@ -274,7 +274,7 @@ class TestIssueTypeEnable:
         assert response.status_code == status.HTTP_201_CREATED, response.data
 
         logos = {row["name"]: row["logo_props"] for row in response.data}
-        assert set(logos) == {"Work Item", "Bug", "Feature", "Task"}
+        assert set(logos) == {"Task", "Bug", "Feature", "Epic", "Question"}
 
         for name, logo_props in logos.items():
             assert logo_props.get("in_use") == "icon", f"{name} renders nothing: {logo_props}"
@@ -290,7 +290,7 @@ class TestIssueTypeEnable:
         response = session_client.post(f"{_collection_url(workspace.slug, project.id)}enable/")
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert response.data == {"error": "WORK_ITEM_TYPES_ALREADY_ENABLED"}
-        assert ProjectIssueType.objects.filter(project=project).count() == 4
+        assert ProjectIssueType.objects.filter(project=project).count() == 5
 
     def test_enable_does_not_backfill_existing_work_items(self, session_client, workspace, project):
         issue = Issue.objects.create(name="Older item", project=project, workspace=workspace)
@@ -307,9 +307,9 @@ class TestIssueTypeEnable:
         session_client.post(f"{_collection_url(workspace.slug, project.id)}enable/")
         session_client.post(f"{_collection_url(workspace.slug, other_project.id)}enable/")
 
-        # Four types in the workspace, not eight -- same-named types are shared
-        assert IssueType.objects.filter(workspace=workspace).count() == 4
-        assert ProjectIssueType.objects.filter(project=other_project).count() == 4
+        # Five types in the workspace, not ten -- same-named types are shared
+        assert IssueType.objects.filter(workspace=workspace).count() == 5
+        assert ProjectIssueType.objects.filter(project=other_project).count() == 5
 
 
 @pytest.mark.contract
